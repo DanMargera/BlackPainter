@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/artistic-brush.png</file>
+        <file>icons/back-arrow.png</file>
+        <file>icons/blank-circle.png</file>
+        <file>icons/drag.png</file>
+        <file>icons/foward-arrow.png</file>
+        <file>icons/line.png</file>
+        <file>icons/paint-bucket.png</file>
+        <file>icons/plain-flat-move-arrow-512-000000.png</file>
+        <file>icons/pointer-crosstree.png</file>
+        <file>icons/square.png</file>
+        <file>icons/vector-line.png</file>
+        <file>icons/zoom-out.png</file>
+        <file>icons/zoom-tool.png</file>
+        <file>icons/down-arrow.png</file>
+        <file>icons/left-arrow.png</file>
+        <file>icons/right-arrow.png</file>
+        <file>icons/up-arrow.png</file>
+    </qresource>
+</RCC>
