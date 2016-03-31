@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=c++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -Ipid_lib -I../pid_lib -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtWidgets -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -Imocs -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -Ipid_lib -I../pid_lib -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtWidgets -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -I. -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/tabocu/Qt/5.5/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = BlackPainter1.0.0
-DISTDIR = /home/tabocu/Git/Complete/src/blackpainter/objs/BlackPainter1.0.0
+DISTDIR = /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/.tmp/BlackPainter1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/tabocu/Qt/5.5/gcc_64 -Wl,-rpath,/home/tabocu/Qt/5.5/gcc_64/lib
 LIBS          = $(SUBLIBS) -L../pid_lib -lpid_lib -L/home/tabocu/Qt/5.5/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -44,7 +44,7 @@ STRIP         = strip
 
 ####### Output directory
 
-OBJECTS_DIR   = objs/
+OBJECTS_DIR   = ./
 
 ####### Files
 
@@ -67,60 +67,64 @@ SOURCES       = main.cpp \
 		graph.cpp \
 		graphv2.cpp \
 		currentsearchdialog.cpp \
-		asyncprocess.cpp qrc_res.cpp \
-		mocs/moc_mainwindow.cpp \
-		mocs/moc_graphicsview.cpp \
-		mocs/moc_abstractdraw.cpp \
-		mocs/moc_coloraction.cpp \
-		mocs/moc_undostack.cpp \
-		mocs/moc_sidepanel.cpp \
-		mocs/moc_histogram.cpp \
-		mocs/moc_newimage.cpp \
-		mocs/moc_colorbutton.cpp \
-		mocs/moc_imageslider.cpp \
-		mocs/moc_preferences.cpp \
-		mocs/moc_spinboxaction.cpp \
-		mocs/moc_graph.cpp \
-		mocs/moc_graphv2.cpp \
-		mocs/moc_currentsearchdialog.cpp \
-		mocs/moc_asyncprocess.cpp
-OBJECTS       = objs/main.o \
-		objs/mainwindow.o \
-		objs/graphicsview.o \
-		objs/multidraw.o \
-		objs/coloraction.o \
-		objs/undostack.o \
-		objs/paintdraw.o \
-		objs/sidepanel.o \
-		objs/histogram.o \
-		objs/newimage.o \
-		objs/colorbutton.o \
-		objs/statusbar.o \
-		objs/imageslider.o \
-		objs/settings.o \
-		objs/preferences.o \
-		objs/spinboxaction.o \
-		objs/graph.o \
-		objs/graphv2.o \
-		objs/currentsearchdialog.o \
-		objs/asyncprocess.o \
-		objs/qrc_res.o \
-		objs/moc_mainwindow.o \
-		objs/moc_graphicsview.o \
-		objs/moc_abstractdraw.o \
-		objs/moc_coloraction.o \
-		objs/moc_undostack.o \
-		objs/moc_sidepanel.o \
-		objs/moc_histogram.o \
-		objs/moc_newimage.o \
-		objs/moc_colorbutton.o \
-		objs/moc_imageslider.o \
-		objs/moc_preferences.o \
-		objs/moc_spinboxaction.o \
-		objs/moc_graph.o \
-		objs/moc_graphv2.o \
-		objs/moc_currentsearchdialog.o \
-		objs/moc_asyncprocess.o
+		asyncprocess.cpp \
+		binaringfilterdialog.cpp qrc_res.cpp \
+		moc_mainwindow.cpp \
+		moc_graphicsview.cpp \
+		moc_abstractdraw.cpp \
+		moc_coloraction.cpp \
+		moc_undostack.cpp \
+		moc_sidepanel.cpp \
+		moc_histogram.cpp \
+		moc_newimage.cpp \
+		moc_colorbutton.cpp \
+		moc_imageslider.cpp \
+		moc_preferences.cpp \
+		moc_spinboxaction.cpp \
+		moc_graph.cpp \
+		moc_graphv2.cpp \
+		moc_currentsearchdialog.cpp \
+		moc_asyncprocess.cpp \
+		moc_binaringfilterdialog.cpp
+OBJECTS       = main.o \
+		mainwindow.o \
+		graphicsview.o \
+		multidraw.o \
+		coloraction.o \
+		undostack.o \
+		paintdraw.o \
+		sidepanel.o \
+		histogram.o \
+		newimage.o \
+		colorbutton.o \
+		statusbar.o \
+		imageslider.o \
+		settings.o \
+		preferences.o \
+		spinboxaction.o \
+		graph.o \
+		graphv2.o \
+		currentsearchdialog.o \
+		asyncprocess.o \
+		binaringfilterdialog.o \
+		qrc_res.o \
+		moc_mainwindow.o \
+		moc_graphicsview.o \
+		moc_abstractdraw.o \
+		moc_coloraction.o \
+		moc_undostack.o \
+		moc_sidepanel.o \
+		moc_histogram.o \
+		moc_newimage.o \
+		moc_colorbutton.o \
+		moc_imageslider.o \
+		moc_preferences.o \
+		moc_spinboxaction.o \
+		moc_graph.o \
+		moc_graphv2.o \
+		moc_currentsearchdialog.o \
+		moc_asyncprocess.o \
+		moc_binaringfilterdialog.o
 DIST          = ../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -276,7 +280,8 @@ DIST          = ../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		graph.h \
 		graphv2.h \
 		currentsearchdialog.h \
-		asyncprocess.h main.cpp \
+		asyncprocess.h \
+		binaringfilterdialog.h main.cpp \
 		mainwindow.cpp \
 		graphicsview.cpp \
 		multidraw.cpp \
@@ -295,7 +300,8 @@ DIST          = ../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		graph.cpp \
 		graphv2.cpp \
 		currentsearchdialog.cpp \
-		asyncprocess.cpp
+		asyncprocess.cpp \
+		binaringfilterdialog.cpp
 QMAKE_TARGET  = BlackPainter
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = BlackPainter
@@ -624,8 +630,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h graphicsview.h abstractdraw.h multidraw.h coloraction.h undostack.h paintdraw.h sidepanel.h histogram.h newimage.h colorbutton.h statusbar.h imageslider.h settings.h preferences.h spinboxaction.h graph.h graphv2.h currentsearchdialog.h asyncprocess.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp graphicsview.cpp multidraw.cpp coloraction.cpp undostack.cpp paintdraw.cpp sidepanel.cpp histogram.cpp newimage.cpp colorbutton.cpp statusbar.cpp imageslider.cpp settings.cpp preferences.cpp spinboxaction.cpp graph.cpp graphv2.cpp currentsearchdialog.cpp asyncprocess.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h graphicsview.h abstractdraw.h multidraw.h coloraction.h undostack.h paintdraw.h sidepanel.h histogram.h newimage.h colorbutton.h statusbar.h imageslider.h settings.h preferences.h spinboxaction.h graph.h graphv2.h currentsearchdialog.h asyncprocess.h binaringfilterdialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp graphicsview.cpp multidraw.cpp coloraction.cpp undostack.cpp paintdraw.cpp sidepanel.cpp histogram.cpp newimage.cpp colorbutton.cpp statusbar.cpp imageslider.cpp settings.cpp preferences.cpp spinboxaction.cpp graph.cpp graphv2.cpp currentsearchdialog.cpp asyncprocess.cpp binaringfilterdialog.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -669,10 +675,10 @@ qrc_res.cpp: ../res.qrc \
 		../icons/pointer-crosstree.png
 	/home/tabocu/Qt/5.5/gcc_64/bin/rcc -name res ../res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: mocs/moc_mainwindow.cpp mocs/moc_graphicsview.cpp mocs/moc_abstractdraw.cpp mocs/moc_coloraction.cpp mocs/moc_undostack.cpp mocs/moc_sidepanel.cpp mocs/moc_histogram.cpp mocs/moc_newimage.cpp mocs/moc_colorbutton.cpp mocs/moc_imageslider.cpp mocs/moc_preferences.cpp mocs/moc_spinboxaction.cpp mocs/moc_graph.cpp mocs/moc_graphv2.cpp mocs/moc_currentsearchdialog.cpp mocs/moc_asyncprocess.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_graphicsview.cpp moc_abstractdraw.cpp moc_coloraction.cpp moc_undostack.cpp moc_sidepanel.cpp moc_histogram.cpp moc_newimage.cpp moc_colorbutton.cpp moc_imageslider.cpp moc_preferences.cpp moc_spinboxaction.cpp moc_graph.cpp moc_graphv2.cpp moc_currentsearchdialog.cpp moc_asyncprocess.cpp moc_binaringfilterdialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) mocs/moc_mainwindow.cpp mocs/moc_graphicsview.cpp mocs/moc_abstractdraw.cpp mocs/moc_coloraction.cpp mocs/moc_undostack.cpp mocs/moc_sidepanel.cpp mocs/moc_histogram.cpp mocs/moc_newimage.cpp mocs/moc_colorbutton.cpp mocs/moc_imageslider.cpp mocs/moc_preferences.cpp mocs/moc_spinboxaction.cpp mocs/moc_graph.cpp mocs/moc_graphv2.cpp mocs/moc_currentsearchdialog.cpp mocs/moc_asyncprocess.cpp
-mocs/moc_mainwindow.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QMainWindow \
+	-$(DEL_FILE) moc_mainwindow.cpp moc_graphicsview.cpp moc_abstractdraw.cpp moc_coloraction.cpp moc_undostack.cpp moc_sidepanel.cpp moc_histogram.cpp moc_newimage.cpp moc_colorbutton.cpp moc_imageslider.cpp moc_preferences.cpp moc_spinboxaction.cpp moc_graph.cpp moc_graphv2.cpp moc_currentsearchdialog.cpp moc_asyncprocess.cpp moc_binaringfilterdialog.cpp
+moc_mainwindow.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
@@ -844,9 +850,9 @@ mocs/moc_mainwindow.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QMainWindow
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qregularexpression.h \
 		mainwindow.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o mocs/moc_mainwindow.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
-mocs/moc_graphicsview.cpp: abstractdraw.h \
+moc_graphicsview.cpp: abstractdraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
@@ -963,9 +969,9 @@ mocs/moc_graphicsview.cpp: abstractdraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h \
 		graphicsview.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graphicsview.h -o mocs/moc_graphicsview.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graphicsview.h -o moc_graphicsview.cpp
 
-mocs/moc_abstractdraw.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
+moc_abstractdraw.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
@@ -1078,9 +1084,9 @@ mocs/moc_abstractdraw.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qcursor.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		abstractdraw.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore abstractdraw.h -o mocs/moc_abstractdraw.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore abstractdraw.h -o moc_abstractdraw.cpp
 
-mocs/moc_coloraction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QAction \
+moc_coloraction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QAction \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qkeysequence.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
@@ -1188,9 +1194,9 @@ mocs/moc_coloraction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QAction \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QColor \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize \
 		coloraction.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore coloraction.h -o mocs/moc_coloraction.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore coloraction.h -o moc_coloraction.cpp
 
-mocs/moc_undostack.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QStack \
+moc_undostack.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QStack \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qstack.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
@@ -1267,9 +1273,9 @@ mocs/moc_undostack.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QStack \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpixelformat.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		undostack.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore undostack.h -o mocs/moc_undostack.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore undostack.h -o moc_undostack.cpp
 
-mocs/moc_sidepanel.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
+moc_sidepanel.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -1392,9 +1398,9 @@ mocs/moc_sidepanel.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsVie
 		../../../../Qt/5.5/gcc_64/include/QtGui/QImage \
 		graph.h \
 		sidepanel.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore sidepanel.h -o mocs/moc_sidepanel.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore sidepanel.h -o moc_sidepanel.cpp
 
-mocs/moc_histogram.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
+moc_histogram.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -1501,9 +1507,9 @@ mocs/moc_histogram.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../pid_lib/pidtools.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QImage \
 		histogram.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore histogram.h -o mocs/moc_histogram.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore histogram.h -o moc_histogram.cpp
 
-mocs/moc_newimage.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
+moc_newimage.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
@@ -1628,9 +1634,9 @@ mocs/moc_newimage.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		colorbutton.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize \
 		newimage.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore newimage.h -o mocs/moc_newimage.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore newimage.h -o moc_newimage.cpp
 
-mocs/moc_colorbutton.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QPushButton \
+moc_colorbutton.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
@@ -1738,9 +1744,9 @@ mocs/moc_colorbutton.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QPushButto
 		../../../../Qt/5.5/gcc_64/include/QtGui/QColor \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize \
 		colorbutton.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore colorbutton.h -o mocs/moc_colorbutton.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore colorbutton.h -o moc_colorbutton.cpp
 
-mocs/moc_imageslider.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QList \
+moc_imageslider.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -1855,9 +1861,9 @@ mocs/moc_imageslider.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QMouseEvent \
 		imageslider.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore imageslider.h -o mocs/moc_imageslider.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore imageslider.h -o moc_imageslider.cpp
 
-mocs/moc_preferences.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
+moc_preferences.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
@@ -1974,9 +1980,9 @@ mocs/moc_preferences.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
 		preferences.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore preferences.h -o mocs/moc_preferences.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore preferences.h -o moc_preferences.cpp
 
-mocs/moc_spinboxaction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidgetAction \
+moc_spinboxaction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidgetAction \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidgetaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qkeysequence.h \
@@ -2098,9 +2104,9 @@ mocs/moc_spinboxaction.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidgetA
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qregularexpression.h \
 		spinboxaction.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore spinboxaction.h -o mocs/moc_spinboxaction.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore spinboxaction.h -o moc_spinboxaction.cpp
 
-mocs/moc_graph.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
+moc_graph.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -2205,9 +2211,9 @@ mocs/moc_graph.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QVector \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QMouseEvent \
 		graph.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graph.h -o mocs/moc_graph.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graph.h -o moc_graph.cpp
 
-mocs/moc_graphv2.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
+moc_graphv2.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -2318,9 +2324,9 @@ mocs/moc_graphv2.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView 
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		graphv2.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graphv2.h -o mocs/moc_graphv2.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore graphv2.h -o moc_graphv2.cpp
 
-mocs/moc_currentsearchdialog.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
+moc_currentsearchdialog.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
@@ -2455,9 +2461,9 @@ mocs/moc_currentsearchdialog.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QD
 		../pid_lib/pidtools.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QVector \
 		currentsearchdialog.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore currentsearchdialog.h -o mocs/moc_currentsearchdialog.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore currentsearchdialog.h -o moc_currentsearchdialog.cpp
 
-mocs/moc_asyncprocess.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
+moc_asyncprocess.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
@@ -2528,7 +2534,127 @@ mocs/moc_asyncprocess.cpp: ../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QString \
 		asyncprocess.h
-	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/Complete/src/blackpainter -I/home/tabocu/Git/Complete/src/blackpainter/pid_lib -I/home/tabocu/Git/Complete/src/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore asyncprocess.h -o mocs/moc_asyncprocess.cpp
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore asyncprocess.h -o moc_asyncprocess.cpp
+
+moc_binaringfilterdialog.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
+		binaringfilterdialog.h
+	/home/tabocu/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/home/tabocu/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter -I/home/tabocu/Git/BlackPainter/blackpainter/blackpainter/pid_lib -I/home/tabocu/Git/BlackPainter/blackpainter/pid_lib -I/home/tabocu/Qt/5.5/gcc_64/include -I/home/tabocu/Qt/5.5/gcc_64/include/QtWidgets -I/home/tabocu/Qt/5.5/gcc_64/include/QtGui -I/home/tabocu/Qt/5.5/gcc_64/include/QtCore binaringfilterdialog.h -o moc_binaringfilterdialog.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2544,7 +2670,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean
 
 ####### Compile
 
-objs/main.o: main.cpp mainwindow.h \
+main.o: main.cpp mainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -2723,9 +2849,9 @@ objs/main.o: main.cpp mainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qinputmethod.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/main.o main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-objs/mainwindow.o: mainwindow.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QtWidgets \
+mainwindow.o: mainwindow.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QtWidgets \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QtCore \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QtCoreDepends \
@@ -3216,9 +3342,9 @@ objs/mainwindow.o: mainwindow.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/Qt
 		../../../../Qt/5.5/gcc_64/include/QtCore/QProcess \
 		asyncprocess.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/mainwindow.o mainwindow.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-objs/graphicsview.o: graphicsview.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsItem \
+graphicsview.o: graphicsview.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
@@ -3337,9 +3463,9 @@ objs/graphicsview.o: graphicsview.cpp ../../../../Qt/5.5/gcc_64/include/QtWidget
 		../../../../Qt/5.5/gcc_64/include/QtGui/QImage \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/graphicsview.o graphicsview.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphicsview.o graphicsview.cpp
 
-objs/multidraw.o: multidraw.cpp multidraw.h \
+multidraw.o: multidraw.cpp multidraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -3462,9 +3588,9 @@ objs/multidraw.o: multidraw.cpp multidraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QBrush \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QtMath \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmath.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/multidraw.o multidraw.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o multidraw.o multidraw.cpp
 
-objs/coloraction.o: coloraction.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QColorDialog \
+coloraction.o: coloraction.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QColorDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qcolordialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -3575,9 +3701,9 @@ objs/coloraction.o: coloraction.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qactiongroup.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QColor \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/coloraction.o coloraction.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o coloraction.o coloraction.cpp
 
-objs/undostack.o: undostack.cpp undostack.h \
+undostack.o: undostack.cpp undostack.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QStack \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qstack.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
@@ -3654,9 +3780,9 @@ objs/undostack.o: undostack.cpp undostack.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qrgb.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpixelformat.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QObject
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/undostack.o undostack.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o undostack.o undostack.cpp
 
-objs/paintdraw.o: paintdraw.cpp paintdraw.h \
+paintdraw.o: paintdraw.cpp paintdraw.h \
 		abstractdraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
@@ -3777,9 +3903,9 @@ objs/paintdraw.o: paintdraw.cpp paintdraw.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QImage \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/paintdraw.o paintdraw.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o paintdraw.o paintdraw.cpp
 
-objs/sidepanel.o: sidepanel.cpp sidepanel.h \
+sidepanel.o: sidepanel.cpp sidepanel.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
@@ -3912,9 +4038,9 @@ objs/sidepanel.o: sidepanel.cpp sidepanel.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLayout
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/sidepanel.o sidepanel.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sidepanel.o sidepanel.cpp
 
-objs/histogram.o: histogram.cpp ../../../../Qt/5.5/gcc_64/include/QtGui/QPainter \
+histogram.o: histogram.cpp ../../../../Qt/5.5/gcc_64/include/QtGui/QPainter \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpainter.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
@@ -4029,9 +4155,9 @@ objs/histogram.o: histogram.cpp ../../../../Qt/5.5/gcc_64/include/QtGui/QPainter
 		../../../../Qt/5.5/gcc_64/include/QtCore/QPointF \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QPolygonF \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/histogram.o histogram.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o histogram.o histogram.cpp
 
-objs/newimage.o: newimage.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGridLayout \
+newimage.o: newimage.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGridLayout \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayout.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
@@ -4160,9 +4286,9 @@ objs/newimage.o: newimage.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QGridL
 		../../../../Qt/5.5/gcc_64/include/QtGui/QColor \
 		colorbutton.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/newimage.o newimage.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newimage.o newimage.cpp
 
-objs/colorbutton.o: colorbutton.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QColorDialog \
+colorbutton.o: colorbutton.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/QColorDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qcolordialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -4277,9 +4403,9 @@ objs/colorbutton.o: colorbutton.cpp ../../../../Qt/5.5/gcc_64/include/QtWidgets/
 		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QColor \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSize
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/colorbutton.o colorbutton.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o colorbutton.o colorbutton.cpp
 
-objs/statusbar.o: statusbar.cpp statusbar.h \
+statusbar.o: statusbar.cpp statusbar.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -4386,9 +4512,9 @@ objs/statusbar.o: statusbar.cpp statusbar.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qframe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/statusbar.o statusbar.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o statusbar.o statusbar.cpp
 
-objs/imageslider.o: imageslider.cpp imageslider.h \
+imageslider.o: imageslider.cpp imageslider.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QList \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
@@ -4506,9 +4632,9 @@ objs/imageslider.o: imageslider.cpp imageslider.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QVariant
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/imageslider.o imageslider.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageslider.o imageslider.cpp
 
-objs/settings.o: settings.cpp settings.h \
+settings.o: settings.cpp settings.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QSettings \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qsettings.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
@@ -4576,9 +4702,9 @@ objs/settings.o: settings.cpp settings.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qpoint.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qset.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/settings.o settings.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o settings.cpp
 
-objs/preferences.o: preferences.cpp preferences.h \
+preferences.o: preferences.cpp preferences.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -4705,9 +4831,9 @@ objs/preferences.o: preferences.cpp preferences.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/preferences.o preferences.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o preferences.o preferences.cpp
 
-objs/spinboxaction.o: spinboxaction.cpp spinboxaction.h \
+spinboxaction.o: spinboxaction.cpp spinboxaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidgetAction \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidgetaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qaction.h \
@@ -4837,9 +4963,9 @@ objs/spinboxaction.o: spinboxaction.cpp spinboxaction.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayout.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgridlayout.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/spinboxaction.o spinboxaction.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spinboxaction.o spinboxaction.cpp
 
-objs/graph.o: graph.cpp graph.h \
+graph.o: graph.cpp graph.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
@@ -4950,9 +5076,9 @@ objs/graph.o: graph.cpp graph.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpen.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QPainterPath \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/graph.o graph.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph.o graph.cpp
 
-objs/graphv2.o: graphv2.cpp graphv2.h \
+graphv2.o: graphv2.cpp graphv2.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QGraphicsView \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsview.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
@@ -5063,9 +5189,9 @@ objs/graphv2.o: graphv2.cpp graphv2.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgraphicsscene.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/graphv2.o graphv2.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphv2.o graphv2.cpp
 
-objs/currentsearchdialog.o: currentsearchdialog.cpp currentsearchdialog.h \
+currentsearchdialog.o: currentsearchdialog.cpp currentsearchdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -5200,9 +5326,9 @@ objs/currentsearchdialog.o: currentsearchdialog.cpp currentsearchdialog.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/QImage \
 		../pid_lib/pidtools.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QVector
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/currentsearchdialog.o currentsearchdialog.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o currentsearchdialog.o currentsearchdialog.cpp
 
-objs/asyncprocess.o: asyncprocess.cpp asyncprocess.h \
+asyncprocess.o: asyncprocess.cpp asyncprocess.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
@@ -5274,58 +5400,186 @@ objs/asyncprocess.o: asyncprocess.cpp asyncprocess.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QStringList
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/asyncprocess.o asyncprocess.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o asyncprocess.o asyncprocess.cpp
 
-objs/qrc_res.o: qrc_res.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/qrc_res.o qrc_res.cpp
+binaringfilterdialog.o: binaringfilterdialog.cpp binaringfilterdialog.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/QBoxLayout \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qgridlayout.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o binaringfilterdialog.o binaringfilterdialog.cpp
 
-objs/moc_mainwindow.o: mocs/moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_mainwindow.o mocs/moc_mainwindow.cpp
+qrc_res.o: qrc_res.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
 
-objs/moc_graphicsview.o: mocs/moc_graphicsview.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_graphicsview.o mocs/moc_graphicsview.cpp
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
-objs/moc_abstractdraw.o: mocs/moc_abstractdraw.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_abstractdraw.o mocs/moc_abstractdraw.cpp
+moc_graphicsview.o: moc_graphicsview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graphicsview.o moc_graphicsview.cpp
 
-objs/moc_coloraction.o: mocs/moc_coloraction.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_coloraction.o mocs/moc_coloraction.cpp
+moc_abstractdraw.o: moc_abstractdraw.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_abstractdraw.o moc_abstractdraw.cpp
 
-objs/moc_undostack.o: mocs/moc_undostack.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_undostack.o mocs/moc_undostack.cpp
+moc_coloraction.o: moc_coloraction.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_coloraction.o moc_coloraction.cpp
 
-objs/moc_sidepanel.o: mocs/moc_sidepanel.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_sidepanel.o mocs/moc_sidepanel.cpp
+moc_undostack.o: moc_undostack.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_undostack.o moc_undostack.cpp
 
-objs/moc_histogram.o: mocs/moc_histogram.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_histogram.o mocs/moc_histogram.cpp
+moc_sidepanel.o: moc_sidepanel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_sidepanel.o moc_sidepanel.cpp
 
-objs/moc_newimage.o: mocs/moc_newimage.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_newimage.o mocs/moc_newimage.cpp
+moc_histogram.o: moc_histogram.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_histogram.o moc_histogram.cpp
 
-objs/moc_colorbutton.o: mocs/moc_colorbutton.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_colorbutton.o mocs/moc_colorbutton.cpp
+moc_newimage.o: moc_newimage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_newimage.o moc_newimage.cpp
 
-objs/moc_imageslider.o: mocs/moc_imageslider.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_imageslider.o mocs/moc_imageslider.cpp
+moc_colorbutton.o: moc_colorbutton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_colorbutton.o moc_colorbutton.cpp
 
-objs/moc_preferences.o: mocs/moc_preferences.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_preferences.o mocs/moc_preferences.cpp
+moc_imageslider.o: moc_imageslider.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_imageslider.o moc_imageslider.cpp
 
-objs/moc_spinboxaction.o: mocs/moc_spinboxaction.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_spinboxaction.o mocs/moc_spinboxaction.cpp
+moc_preferences.o: moc_preferences.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_preferences.o moc_preferences.cpp
 
-objs/moc_graph.o: mocs/moc_graph.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_graph.o mocs/moc_graph.cpp
+moc_spinboxaction.o: moc_spinboxaction.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_spinboxaction.o moc_spinboxaction.cpp
 
-objs/moc_graphv2.o: mocs/moc_graphv2.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_graphv2.o mocs/moc_graphv2.cpp
+moc_graph.o: moc_graph.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graph.o moc_graph.cpp
 
-objs/moc_currentsearchdialog.o: mocs/moc_currentsearchdialog.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_currentsearchdialog.o mocs/moc_currentsearchdialog.cpp
+moc_graphv2.o: moc_graphv2.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graphv2.o moc_graphv2.cpp
 
-objs/moc_asyncprocess.o: mocs/moc_asyncprocess.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/moc_asyncprocess.o mocs/moc_asyncprocess.cpp
+moc_currentsearchdialog.o: moc_currentsearchdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_currentsearchdialog.o moc_currentsearchdialog.cpp
+
+moc_asyncprocess.o: moc_asyncprocess.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_asyncprocess.o moc_asyncprocess.cpp
+
+moc_binaringfilterdialog.o: moc_binaringfilterdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_binaringfilterdialog.o moc_binaringfilterdialog.cpp
 
 ####### Install
 

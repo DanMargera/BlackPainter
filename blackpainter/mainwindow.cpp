@@ -10,6 +10,7 @@
 #include "currentsearchdialog.h"
 #include <QProcess>
 #include "asyncprocess.h"
+#include "binaringfilterdialog.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -108,6 +109,7 @@ void MainWindow::createActions()
     grayScaleAct = new QAction(tr("&Gray Scale"),this);
     convolutionAct = new QAction(tr("&Convolution RGB"),this);
     convolutionGSAct = new QAction(tr("C&onvolution GS"),this);
+    binaringAct = new QAction(tr("&Binaring"),this);
 
     //Search
     currentAct = new QAction(tr("&Current Image"),this);
@@ -159,6 +161,7 @@ void MainWindow::createMenu()
     filterMenu->addAction(grayScaleAct);
     filterMenu->addAction(convolutionAct);
     filterMenu->addAction(convolutionGSAct);
+    filterMenu->addAction(binaringAct);
 
     searchMenu->addAction(currentAct);
 
@@ -275,6 +278,9 @@ void MainWindow::createDialogs()
     preferences = new Preferences(this);
     connect(preferences,SIGNAL(apply()),this,SLOT(applyPreferences()));
     connect(preferences,SIGNAL(cancel()),this,SLOT(cancelPreferences()));
+
+    binaring = new BinaringFilterDialog(this);
+    connect(binaring,SIGNAL(changed(int)),this,SLOT(binaringChanged(int)));
 
     QSettings settings("Black Seed","Black Painter",this);
     settings.beginGroup("Preferences");
@@ -475,6 +481,11 @@ void MainWindow::filterAct(QAction* filterAction)
         image = PIDTools::convolution(*view->getQImage());
     else if(filterAction == convolutionGSAct)
         image = PIDTools::convolution_GS(*view->getQImage());
+    else if(filterAction == binaringAct)
+    {
+        binaring->showNormal();
+        return;
+    }
     else return;
 
     view->setQImage(&image);
@@ -585,6 +596,14 @@ void MainWindow::loadImages()
     QDirIterator it(preferences->getPath(), QStringList() << "*.jpg", QDir::Files, QDirIterator::NoIteratorFlags);
     while (it.hasNext())
         imageSlider->appendImagePath(it.next());
+}
+
+void MainWindow::binaringChanged(int value)
+{
+    QImage *img1 = view->getQImage();
+    QImage img2 = PIDTools::binaring(*img1,value);
+
+    view->setQImage(&img2);
 }
 
 /*

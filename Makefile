@@ -26,7 +26,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = bpmain1.0.0
-DISTDIR = /home/tabocu/Git/Complete/src/.tmp/bpmain1.0.0
+DISTDIR = /home/tabocu/Git/BlackPainter/blackpainter/.tmp/bpmain1.0.0
 SUBTARGETS    =  \
 		sub-pid_lib \
 		sub-offline \
@@ -35,79 +35,79 @@ SUBTARGETS    =  \
 
 sub-pid_lib-qmake_all:  FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile
+	cd pid_lib/ && $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile
 	cd pid_lib/ && $(MAKE) -f Makefile qmake_all
 sub-pid_lib: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile
 sub-pid_lib-make_first: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-pid_lib-all: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-pid_lib-clean: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-pid_lib-distclean: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-pid_lib-install_subtargets: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-pid_lib-uninstall_subtargets: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-offline-qmake_all:  FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile
+	cd offline/ && $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile
 	cd offline/ && $(MAKE) -f Makefile qmake_all
 sub-offline: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile
 sub-offline-make_first: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-offline-all: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-offline-clean: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-offline-distclean: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-offline-install_subtargets: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-offline-uninstall_subtargets: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-blackpainter-qmake_all:  FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile
+	cd blackpainter/ && $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile
 	cd blackpainter/ && $(MAKE) -f Makefile qmake_all
 sub-blackpainter: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile
 sub-blackpainter-make_first: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile 
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile 
 sub-blackpainter-all: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile all
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile all
 sub-blackpainter-clean: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile clean
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile clean
 sub-blackpainter-distclean: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-blackpainter-install_subtargets: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile install
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile install
 sub-blackpainter-uninstall_subtargets: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: bpmain.pro ../../../Qt/5.5/gcc_64/mkspecs/linux-g++/qmake.conf ../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
@@ -383,13 +383,13 @@ uninstall_subtargets: sub-pid_lib-uninstall_subtargets sub-offline-uninstall_sub
 
 sub-pid_lib-check:
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile check
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -f Makefile check
 sub-offline-check:
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile check
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -f Makefile check
 sub-blackpainter-check:
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile check
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -f Makefile check
 check: sub-pid_lib-check sub-offline-check sub-blackpainter-check
 install:install_subtargets  FORCE
 
@@ -406,13 +406,13 @@ distdir: sub-pid_lib-distdir sub-offline-distdir sub-blackpainter-distdir FORCE
 
 sub-pid_lib-distdir: FORCE
 	@test -d pid_lib/ || mkdir -p pid_lib/
-	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/pid_lib
+	cd pid_lib/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/pid_lib/pid_lib.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/pid_lib
 
 sub-offline-distdir: FORCE
 	@test -d offline/ || mkdir -p offline/
-	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/offline/offline.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/offline
+	cd offline/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/offline/offline.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/offline
 
 sub-blackpainter-distdir: FORCE
 	@test -d blackpainter/ || mkdir -p blackpainter/
-	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/Complete/src/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/blackpainter
+	cd blackpainter/ && ( test -e Makefile || $(QMAKE) /home/tabocu/Git/BlackPainter/blackpainter/blackpainter/blackpainter.pro -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/blackpainter
 

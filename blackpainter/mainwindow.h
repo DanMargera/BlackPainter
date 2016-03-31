@@ -17,6 +17,7 @@
 #include "imageslider.h"
 #include "preferences.h"
 #include "spinboxaction.h"
+#include "binaringfilterdialog.h"
 
 class MainWindow : public QMainWindow
 {
@@ -48,6 +49,8 @@ private slots:
 
     void applyPreferences();
     void cancelPreferences();
+
+    void binaringChanged(int value);
 
 private:
     QString fileName;
@@ -92,6 +95,7 @@ private:
     ImageSlider* imageSlider;
     QDockWidget* imageSliderDock;
     Preferences* preferences;
+    BinaringFilterDialog *binaring;
 
     //File
     QAction *newAct;
@@ -128,6 +132,7 @@ private:
     QAction *grayScaleAct;
     QAction *convolutionAct;
     QAction *convolutionGSAct;
+    QAction *binaringAct;
 
     //Search
     QAction *currentAct;

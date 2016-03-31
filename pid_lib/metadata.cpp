@@ -137,16 +137,19 @@ qreal Metadata::manhattanDistance(Comparable *c1, Comparable *c2)
 
 qreal Metadata::euclideanDistance(Comparable *c1, Comparable *c2)
 {
-
+    Q_UNUSED(c1)
+    Q_UNUSED(c2)
 }
 
 qreal Metadata::chessDistance(Comparable *c1, Comparable *c2)
 {
-
+    Q_UNUSED(c1)
+    Q_UNUSED(c2)
 }
 
 qreal Metadata::cosineDistance(Comparable *c1, Comparable *c2)
 {
-
+    Q_UNUSED(c1)
+    Q_UNUSED(c2)
 }
 

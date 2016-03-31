@@ -351,3 +351,14 @@ QImage PIDTools::convolution_GS(QImage image)
         }
     return result;
 }
+
+QImage PIDTools::binaring(QImage image, int value)
+{
+    for(int x = 0; x < image.size().width(); x++)
+        for(int y = 0; y < image.size().height(); y++)
+            if(rgb(image.pixel(x,y)).r <= value)
+                image.setPixel(x,y,0xff000000);
+            else
+                image.setPixel(x,y,0xffffffff);
+    return image;
+}

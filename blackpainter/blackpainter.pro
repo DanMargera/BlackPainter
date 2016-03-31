@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     	graph.cpp \
     	graphv2.cpp \
     	currentsearchdialog.cpp \
-    	asyncprocess.cpp
+    	asyncprocess.cpp \
+    binaringfilterdialog.cpp
 
 HEADERS  += mainwindow.h \
     	graphicsview.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     	graph.h \
     	graphv2.h \
     	currentsearchdialog.h \
-    	asyncprocess.h
+    	asyncprocess.h \
+    binaringfilterdialog.h
 
 INCLUDEPATH += ../pid_lib
 

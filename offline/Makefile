@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=c++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -Ipid_lib -I../pid_lib -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -Imocs -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -Ipid_lib -I../pid_lib -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -I. -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/tabocu/Qt/5.5/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = offline1.0.0
-DISTDIR = /home/tabocu/Git/Complete/src/offline/objs/offline1.0.0
+DISTDIR = /home/tabocu/Git/BlackPainter/blackpainter/offline/.tmp/offline1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/tabocu/Qt/5.5/gcc_64 -Wl,-rpath,/home/tabocu/Qt/5.5/gcc_64/lib
 LIBS          = $(SUBLIBS) -L../pid_lib -lpid_lib -L/home/tabocu/Qt/5.5/gcc_64/lib -lQt5Gui -L/usr/lib64 -lQt5Core -lGL -lpthread 
@@ -44,12 +44,12 @@ STRIP         = strip
 
 ####### Output directory
 
-OBJECTS_DIR   = objs/
+OBJECTS_DIR   = ./
 
 ####### Files
 
 SOURCES       = main.cpp 
-OBJECTS       = objs/main.o
+OBJECTS       = main.o
 DIST          = ../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -544,7 +544,7 @@ compiler_clean:
 
 ####### Compile
 
-objs/main.o: main.cpp ../../../../Qt/5.5/gcc_64/include/QtCore/QFileInfo \
+main.o: main.cpp ../../../../Qt/5.5/gcc_64/include/QtCore/QFileInfo \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfile.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
@@ -648,7 +648,7 @@ objs/main.o: main.cpp ../../../../Qt/5.5/gcc_64/include/QtCore/QFileInfo \
 		../pid_lib/multi_vector.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QMap \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QString
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objs/main.o main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 ####### Install
 

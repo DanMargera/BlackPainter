@@ -103,6 +103,7 @@ public:
     static int rgb2gray_scale(QRgb rgb);
     static QImage convolution(QImage image);
     static QImage convolution_GS(QImage image);
+    static QImage binaring(QImage image, int value);
 
 private:
     QImage* image;
