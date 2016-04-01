@@ -1,6 +1,9 @@
 #include "binaringfilterdialog.h"
 #include <QBoxLayout>
 #include <QIntValidator>
+#include <QDebug>
+
+QString BinaringFilterDialog::FILTER = "binaring";
 
 BinaringFilterDialog::BinaringFilterDialog(QWidget * parent)
     : QDialog(parent)
@@ -83,7 +86,7 @@ void BinaringFilterDialog::valueEdited(QString value)
     this->value = value.toInt();
     binaringSlider->setValue(this->value);
 
-    changed(this->value);
+    changed(BinaringFilterDialog::FILTER);
 }
 
 void BinaringFilterDialog::valueEdited(int value)

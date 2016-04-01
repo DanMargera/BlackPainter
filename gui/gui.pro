@@ -36,7 +36,8 @@ SOURCES += \
     statusbar.cpp \
     undostack.cpp \
     viewtoolbar.cpp \
-    filtercontroller.cpp
+    filtercontroller.cpp \
+    levelsfilterdialog.cpp
 
 HEADERS  += \
     abstractdraw.h \
@@ -62,7 +63,8 @@ HEADERS  += \
     statusbar.h \
     undostack.h \
     viewtoolbar.h \
-    filtercontroller.h
+    filtercontroller.h \
+    levelsfilterdialog.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/release/ -lpid_lib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/debug/ -lpid_lib

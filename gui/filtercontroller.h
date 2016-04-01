@@ -1,10 +1,12 @@
-#ifndef FILTERCONTROLLER_H
+﻿#ifndef FILTERCONTROLLER_H
 #define FILTERCONTROLLER_H
 
 #include <QObject>
 #include <QWidget>
 #include <QImage>
 #include "binaringfilterdialog.h"
+#include "levelsfilterdialog.h"
+
 
 class FilterController : public QObject
 {
@@ -16,9 +18,10 @@ public:
         this->parent = parent;
     }
     void execBinaring(QImage image);
+    void execLevels(QImage image);
 
 public slots:
-    void changed(int arg0);
+    void changed(QString filter);
     void applied();
     void canceled();
 
@@ -27,6 +30,10 @@ private:
 
     QImage restore;
     QImage modified;
+
+    // FIlters
+    BinaringFilterDialog * binaringFilterDialog;
+    LevelsFilterDialog * levelsFilterDialog;
 
 signals:
     void filterChanged(QImage image);

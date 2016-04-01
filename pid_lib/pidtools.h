@@ -104,6 +104,7 @@ public:
     static QImage convolution(QImage image);
     static QImage convolution_GS(QImage image);
     static QImage binaring(QImage image, int value);
+    static QImage RGB_Level(QImage image, qreal low, qreal high);
 
 private:
     QImage* image;
