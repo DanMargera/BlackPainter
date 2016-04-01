@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     createImageSlider();
     createDrawTools();
     createDialogs();
+    createControllers();
 
     fileInfo = NULL;
 
@@ -279,9 +280,6 @@ void MainWindow::createDialogs()
     connect(preferences,SIGNAL(apply()),this,SLOT(applyPreferences()));
     connect(preferences,SIGNAL(cancel()),this,SLOT(cancelPreferences()));
 
-    binaring = new BinaringFilterDialog(this);
-    connect(binaring,SIGNAL(changed(int)),this,SLOT(binaringChanged(int)));
-
     QSettings settings("Black Seed","Black Painter",this);
     settings.beginGroup("Preferences");
     preferences->setPath(settings.value("defaultPath",QCoreApplication::applicationDirPath()).toString());
@@ -483,7 +481,7 @@ void MainWindow::filterAct(QAction* filterAction)
         image = PIDTools::convolution_GS(*view->getQImage());
     else if(filterAction == binaringAct)
     {
-        binaring->showNormal();
+        filterController->execBinaring(*view->getQImage());
         return;
     }
     else return;
@@ -598,14 +596,6 @@ void MainWindow::loadImages()
         imageSlider->appendImagePath(it.next());
 }
 
-void MainWindow::binaringChanged(int value)
-{
-    QImage *img1 = view->getQImage();
-    QImage img2 = PIDTools::binaring(*img1,value);
-
-    view->setQImage(&img2);
-}
-
 /*
  * Recebe uma lista de células contendo o Path de cada imagem,
  * e carrega no imageSlider na ordem da lista;
@@ -620,6 +610,30 @@ void MainWindow::loadOrderedImages(QList<ImageCell*> list)
         ic = it.next();
         imageSlider->appendImagePath(ic->path);
     }
+}
+
+void MainWindow::createControllers()
+{
+    filterController = new FilterController(this);
+    connect(filterController,SIGNAL(filterChanged(QImage)),this,SLOT(filterChanged(QImage)));
+    connect(filterController,SIGNAL(filterApplied(QImage)),this,SLOT(filterApplied(QImage)));
+    connect(filterController,SIGNAL(filterCanceled(QImage)),this,SLOT(filterCanceled(QImage)));
+}
+
+void MainWindow::filterChanged(QImage image)
+{
+    view->setQImage(&image);
+}
+
+void MainWindow::filterApplied(QImage image)
+{
+    view->setQImage(&image);
+    doIt();
+}
+
+void MainWindow::filterCanceled(QImage image)
+{
+    view->setQImage(&image);
 }
 
 MainWindow::~MainWindow()

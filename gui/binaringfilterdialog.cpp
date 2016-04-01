@@ -38,11 +38,6 @@ void BinaringFilterDialog::createWidgets()
     connect(okBtn,SIGNAL(clicked(bool)),this,SLOT(okBinaring()));
     connect(cancelBtn,SIGNAL(clicked(bool)),this,SLOT(cancelBinaring()));
 
-//    connect(choosePathBtn,SIGNAL(clicked(bool)),this,SLOT(choosePath()));
-//    connect(applyPathBtn, SIGNAL(clicked(bool)),this,SLOT(applyPath()));
-//    connect(okPathBtn,    SIGNAL(clicked(bool)),this,SLOT(okPath()));
-//    connect(cancelPathBtn,SIGNAL(clicked(bool)),this,SLOT(cancelPath()));
-//    connect(pathLineEdit,SIGNAL(textChanged(QString)),this,SLOT(updateBtns()));
 }
 
 void BinaringFilterDialog::createLayout()
@@ -98,12 +93,12 @@ void BinaringFilterDialog::valueEdited(int value)
 
 void BinaringFilterDialog::okBinaring()
 {
-    ok();
+    accept();
     close();
 }
 
 void BinaringFilterDialog::cancelBinaring()
 {
-    cancel();
+    reject();
     close();
 }

@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    gui \
+    pid_lib \
     offline \
-    pid_lib
+    gui

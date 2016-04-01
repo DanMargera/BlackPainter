@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDialog>
+#include <QImage>
 
 class BinaringFilterDialog : public QDialog
 {
@@ -13,6 +14,8 @@ class BinaringFilterDialog : public QDialog
 
 public:
     BinaringFilterDialog(QWidget * parent = 0);
+
+    int getValue() { return value; }
 
 signals:
     void changed(int value);

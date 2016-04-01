@@ -35,7 +35,8 @@ SOURCES += \
     spinboxaction.cpp \
     statusbar.cpp \
     undostack.cpp \
-    viewtoolbar.cpp
+    viewtoolbar.cpp \
+    filtercontroller.cpp
 
 HEADERS  += \
     abstractdraw.h \
@@ -60,7 +61,8 @@ HEADERS  += \
     spinboxaction.h \
     statusbar.h \
     undostack.h \
-    viewtoolbar.h
+    viewtoolbar.h \
+    filtercontroller.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/release/ -lpid_lib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/debug/ -lpid_lib

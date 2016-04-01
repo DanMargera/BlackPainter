@@ -18,6 +18,7 @@
 #include "preferences.h"
 #include "spinboxaction.h"
 #include "binaringfilterdialog.h"
+#include "filtercontroller.h"
 
 class MainWindow : public QMainWindow
 {
@@ -50,7 +51,9 @@ private slots:
     void applyPreferences();
     void cancelPreferences();
 
-    void binaringChanged(int value);
+    void filterChanged(QImage image);
+    void filterApplied(QImage image);
+    void filterCanceled(QImage image);
 
 private:
     QString fileName;
@@ -66,6 +69,7 @@ private:
     void createSidepanel();
     void createImageSlider();
     void createDialogs();
+    void createControllers();
 
     void loadImage(QImage* imageObject);
     void setupTitle();
@@ -95,7 +99,6 @@ private:
     ImageSlider* imageSlider;
     QDockWidget* imageSliderDock;
     Preferences* preferences;
-    BinaringFilterDialog *binaring;
 
     //File
     QAction *newAct;
@@ -146,6 +149,9 @@ private:
     EllipseDraw* ellipseDraw;
     LineDraw*    lineDraw;
     PencilDraw*  pencilDraw;
+
+    //Controllers
+    FilterController * filterController;
 };
 
 #endif // MAINWINDOW_H
