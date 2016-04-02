@@ -1,8 +1,8 @@
 #include <QGridLayout>
 #include <QIntValidator>
-#include "newimage.h"
+#include "newimagedialog.h"
 
-NewImage::NewImage(QWidget * parent, int width, int height)
+NewImageDialog::NewImageDialog(QWidget * parent, int width, int height)
     : QDialog(parent)
 {
     setMaximumSize(QSize(180,180));
@@ -13,7 +13,7 @@ NewImage::NewImage(QWidget * parent, int width, int height)
     createLayout();
 }
 
-void NewImage::createWidgets(int width, int height)
+void NewImageDialog::createWidgets(int width, int height)
 {
     dialogLabel     = new QLabel      (tr("Image size:"),this);
 
@@ -38,7 +38,7 @@ void NewImage::createWidgets(int width, int height)
     connect(createBtn,SIGNAL(clicked(bool)),this,SLOT(accept()));
 }
 
-void NewImage::createLayout()
+void NewImageDialog::createLayout()
 {
     QGridLayout* layout = new QGridLayout();
 
@@ -61,13 +61,13 @@ void NewImage::createLayout()
     setLayout(layout);
 }
 
-QSize NewImage::selectedSize()
+QSize NewImageDialog::selectedSize()
 {
     return QSize(widthLineEdit->text().toInt(),
                  heightLineEdit->text().toInt());
 }
 
-QColor NewImage::selectedColor()
+QColor NewImageDialog::selectedColor()
 {
     return colorButton->getColor();
 }

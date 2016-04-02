@@ -3,14 +3,13 @@
 #include <QActionGroup>
 #include "mainwindow.h"
 
-#include "histogram.h"
+#include <Graphs/histogram.h>
 #include <pidtools.h>
 #include <metadatafile.h>
-#include "newimage.h"
-#include "currentsearchdialog.h"
+#include <Dialog/newimagedialog.h>
+#include <Dialog/currentsearchdialog.h>
 #include <QProcess>
-#include "asyncprocess.h"
-#include "thresholdfilterdialog.h"
+#include <asyncprocess.h>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -280,7 +279,7 @@ void MainWindow::createDialogs()
     saveMessageBox->setStandardButtons(QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
     saveMessageBox->setDefaultButton(QMessageBox::Save);
 
-    preferences = new Preferences(this);
+    preferences = new PreferencesDialog(this);
     connect(preferences,SIGNAL(apply()),this,SLOT(applyPreferences()));
     connect(preferences,SIGNAL(cancel()),this,SLOT(cancelPreferences()));
 
@@ -359,7 +358,7 @@ void MainWindow::fileAct(QAction* fileAction)
 
     if(fileAction == newAct)
     {
-        NewImage newDialog(this,800,600);
+        NewImageDialog newDialog(this,800,600);
         if(!newDialog.exec()) return;
         QImage* imageObject = new QImage(newDialog.selectedSize(),
                                          QImage::Format_ARGB32_Premultiplied);
@@ -622,7 +621,7 @@ void MainWindow::loadOrderedImages(QList<ImageCell*> list)
     ImageCell* ic;
     while(it.hasNext()) {
         ic = it.next();
-        qDebug() << ic->distance;
+        //qDebug() << ic->distance;
         imageSlider->appendImagePath(ic->path);
     }
 }

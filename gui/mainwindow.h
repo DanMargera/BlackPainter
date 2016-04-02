@@ -7,18 +7,17 @@
 #include <QColor>
 #include <QFileInfo>
 
-#include "graphicsview.h"
-#include "coloraction.h"
-#include "undostack.h"
-#include "sidepanel.h"
-#include "statusbar.h"
-#include "paintdraw.h"
-#include "multidraw.h"
-#include "imageslider.h"
-#include "preferences.h"
-#include "spinboxaction.h"
-#include "thresholdfilterdialog.h"
-#include "filtercontroller.h"
+#include <graphicsview.h>
+#include <Components/coloraction.h>
+#include <undostack.h>
+#include <sidepanel.h>
+#include <statusbar.h>
+#include <paintdraw.h>
+#include <multidraw.h>
+#include <imageslider.h>
+#include <Dialog/preferencesdialog.h>
+#include <Components/spinboxaction.h>
+#include <filtercontroller.h>
 
 class MainWindow : public QMainWindow
 {
@@ -98,7 +97,7 @@ private:
     QMessageBox* saveMessageBox;
     ImageSlider* imageSlider;
     QDockWidget* imageSliderDock;
-    Preferences* preferences;
+    PreferencesDialog* preferences;
 
     //File
     QAction *newAct;

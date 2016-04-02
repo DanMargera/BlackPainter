@@ -1,10 +1,10 @@
-#include "preferences.h"
+#include "preferencesdialog.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QFileDialog>
 
-Preferences::Preferences(QWidget * parent)
+PreferencesDialog::PreferencesDialog(QWidget * parent)
     : QDialog(parent)
 {
     setMinimumWidth(400);
@@ -12,7 +12,7 @@ Preferences::Preferences(QWidget * parent)
     createLayout();
 }
 
-void Preferences::createWidgets()
+void PreferencesDialog::createWidgets()
 {
     imagePahtLabel = new QLabel(tr("Choose the image bank folder:"),this);
 
@@ -34,7 +34,7 @@ void Preferences::createWidgets()
     connect(pathLineEdit,SIGNAL(textChanged(QString)),this,SLOT(updateBtns()));
 }
 
-void Preferences::createLayout()
+void PreferencesDialog::createLayout()
 {
     QWidget *pathWidget = new QWidget(this);
     QWidget *btnWidget  = new QWidget(this);
@@ -69,7 +69,7 @@ void Preferences::createLayout()
     setLayout(allLayout);
 }
 
-void Preferences::choosePath()
+void PreferencesDialog::choosePath()
 {
     QFileDialog openDialog(this);
     openDialog.setFileMode(QFileDialog::Directory);
@@ -78,40 +78,40 @@ void Preferences::choosePath()
     pathLineEdit->setText(openDialog.selectedFiles().at(0));
 }
 
-void Preferences::applyPath()
+void PreferencesDialog::applyPath()
 {
     applyPathBtn->setDisabled(true);
     apply();
 }
 
-void Preferences::okPath()
+void PreferencesDialog::okPath()
 {
     if(applyPathBtn->isEnabled()) apply();
     close();
 }
 
-void Preferences::cancelPath()
+void PreferencesDialog::cancelPath()
 {
     cancel();
     close();
 }
 
-QString Preferences::getPath()
+QString PreferencesDialog::getPath()
 {
     return pathLineEdit->text();
 }
 
-void Preferences::setPath(QString path)
+void PreferencesDialog::setPath(QString path)
 {
     pathLineEdit->setText(path);
 }
 
-void Preferences::updateBtns()
+void PreferencesDialog::updateBtns()
 {
     applyPathBtn->setDisabled(false);
 }
 
-Preferences::~Preferences()
+PreferencesDialog::~PreferencesDialog()
 {
     delete imagePahtLabel;
 

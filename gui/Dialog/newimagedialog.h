@@ -7,14 +7,14 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QColor>
-#include "colorbutton.h"
+#include <Components/colorbutton.h>
 
-class NewImage : public QDialog
+class NewImageDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    NewImage(QWidget * parent = 0, int width = 400, int height = 400);
+    NewImageDialog(QWidget * parent = 0, int width = 400, int height = 400);
     QSize selectedSize();
     QColor selectedColor();
 

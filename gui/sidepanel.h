@@ -4,8 +4,8 @@
 #include <QGraphicsView>
 #include <QToolBox>
 #include <QLabel>
-#include <histogram.h>
-#include <graph.h>
+#include <Graphs/histogram.h>
+#include <Graphs/graph.h>
 
 class SidePanel : public QToolBox
 {

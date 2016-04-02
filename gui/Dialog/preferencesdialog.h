@@ -6,13 +6,13 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-class Preferences : public QDialog
+class PreferencesDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    Preferences(QWidget * parent = 0);
-    ~Preferences();
+    PreferencesDialog(QWidget * parent = 0);
+    ~PreferencesDialog();
 
     QString getPath();
     void setPath(QString path);

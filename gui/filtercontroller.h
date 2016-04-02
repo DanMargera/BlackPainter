@@ -4,9 +4,9 @@
 #include <QObject>
 #include <QWidget>
 #include <QImage>
-#include "thresholdfilterdialog.h"
-#include "levelsfilterdialog.h"
-#include "brightnesscontrastfilterdialog.h"
+#include "Dialog/thresholdfilterdialog.h"
+#include "Dialog/levelsfilterdialog.h"
+#include "Dialog/brightnesscontrastfilterdialog.h"
 
 
 class FilterController : public QObject
