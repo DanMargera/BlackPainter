@@ -515,9 +515,6 @@ void MainWindow::searchAct(QAction* searchAction)
         case Yuv:
             current->generateYUV(*view->getQImage());
             break;
-        case Sampling:
-            current->generateSampling(*view->getQImage());
-            break;
         }
 
         while(it.hasNext()) {
@@ -533,9 +530,6 @@ void MainWindow::searchAct(QAction* searchAction)
                 break;
             case Yuv:
                 m->setYUV(MetadataFile::getYUV(filePath));
-                break;
-            case Sampling:
-                m->setSampling(MetadataFile::getSamplingData(filePath));
                 break;
             }
 

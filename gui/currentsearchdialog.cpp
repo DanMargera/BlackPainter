@@ -18,7 +18,6 @@ void CurrentSearchDialog::createWidgets()
     comparisonBox->addItem(tr("RGB"));
     comparisonBox->addItem(tr("HSV"));
     comparisonBox->addItem(tr("YUV"));
-    comparisonBox->addItem(tr("Sampling"));
 
 
     distanceLabel     = new QLabel    (tr("Distance Method:"),this);
@@ -61,8 +60,6 @@ int CurrentSearchDialog::selectedComparisonType()
         return Hsv;
     case 2:
         return Yuv;
-    case 3:
-        return Sampling;
     default:
         return 0;
     }
