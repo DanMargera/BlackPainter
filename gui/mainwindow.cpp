@@ -470,6 +470,11 @@ void MainWindow::viewAct(QAction* viewAction)
         view->fitInView(view->scene()->sceneRect(),Qt::KeepAspectRatio);
 }
 
+bool compareImageCell(const ImageCell* a, const ImageCell* b)
+{
+    return a->distance < b->distance;
+}
+
 void MainWindow::filterAct(QAction* filterAction)
 {
     QImage image;
@@ -545,10 +550,11 @@ void MainWindow::searchAct(QAction* searchAction)
             tempIc->path = filePath.replace(".data", "");
             list << tempIc;
         }
-        qSort(list.begin(), list.end());
+        qSort(list.begin(), list.end(), compareImageCell);
         loadOrderedImages(list);
     }
 }
+
 
 void MainWindow::helpAct(QAction* helpAction)
 {
@@ -609,6 +615,7 @@ void MainWindow::loadOrderedImages(QList<ImageCell*> list)
     ImageCell* ic;
     while(it.hasNext()) {
         ic = it.next();
+        qDebug() << ic->distance;
         imageSlider->appendImagePath(ic->path);
     }
 }

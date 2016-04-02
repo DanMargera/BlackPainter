@@ -2,6 +2,8 @@
 #define CURRENTSEARCHDIALOG_H
 
 #include <QDialog>
+#include <QSlider>
+#include <QLineEdit>
 #include <QComboBox>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -25,11 +27,19 @@ private:
     QLabel*      distanceLabel;
     QComboBox*   distanceBox;
 
+    QLabel*      samplingLabel;
+    QLineEdit*   valueLineEdit;
+    QSlider*     samplingSlider;
+
     QPushButton* searchBtn;
     QPushButton* cancelBtn;
 
     void createWidgets();
     void createLayout();
+
+private slots:
+    void valueEdited(QString value);
+    void valueEdited(int value);
 };
 
 #endif // CURRENTSEARCHDIALOG_H

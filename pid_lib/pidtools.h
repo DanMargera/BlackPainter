@@ -5,7 +5,7 @@
 #include <QVector>
 
 static const double nValue = 255; // VALOR USADO PRA NORMALIZAR OS RESULTADOS
-static const int imagePixels = 98304;
+static const int imagePixels = 98304; // número de pixels das imagens do banco de dados
 
 struct RGB_Data
 {
@@ -71,10 +71,6 @@ struct ImageCell
 {
     QString path;
     qreal distance;
-    friend bool operator<(const ImageCell& a, const ImageCell& b)
-    {
-        return a.distance < b.distance;
-    }
 };
 
 class PIDTools

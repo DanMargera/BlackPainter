@@ -1,4 +1,4 @@
-#include "pidtools.h"
+#include "metadata.h"
 #include <QColor>
 #include <cmath>
 #include <QDebug>
@@ -44,13 +44,13 @@ RGB_Data* PIDTools::rgbHistogram(QImage image)
 RGB_Data* PIDTools::rgbData(QImage image)
 {
     RGB_Data* vector = new RGB_Data();
-    vector->r = new QVector<int>(imagePixels,0);
-    vector->g = new QVector<int>(imagePixels,0);
-    vector->b = new QVector<int>(imagePixels,0);
+    vector->r = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    vector->g = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    vector->b = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
     RGBpixel rgbPixel;
     int i = 0;
-    for(int x = 0; x < image.size().width(); x++)
-        for(int y = 0; y < image.size().height(); y++)
+    for(int x = 0; x < image.size().width(); x+=samplingValue)
+        for(int y = 0; y < image.size().height(); y+=samplingValue)
         {
             rgbPixel = rgb(image.pixel(x,y));
             (*vector->r)[i] = (int)(rgbPixel.r*nValue/255.0);
@@ -65,13 +65,13 @@ RGB_Data* PIDTools::rgbData(QImage image)
 HSV_Data* PIDTools::hsvData(QImage image)
 {
     HSV_Data* data = new HSV_Data();
-    data->h = new QVector<int>(imagePixels,0);
-    data->s = new QVector<int>(imagePixels,0);
-    data->v = new QVector<int>(imagePixels,0);
+    data->h = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    data->s = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    data->v = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
     HSVpixel hsvPixel;
     int i = 0;
-    for(int x = 0; x < image.size().width(); x++)
-        for(int y = 0; y < image.size().height(); y++)
+    for(int x = 0; x < image.size().width(); x+=samplingValue)
+        for(int y = 0; y < image.size().height(); y+=samplingValue)
         {
             hsvPixel = rgb2hsv(image.pixel(x,y));
             (*data->h)[i] = (int)((hsvPixel.h*nValue)/360.0);
@@ -86,13 +86,13 @@ HSV_Data* PIDTools::hsvData(QImage image)
 YUV_Data* PIDTools::yuvData(QImage image)
 {
     YUV_Data* data = new YUV_Data();
-    data->y = new QVector<int>(imagePixels,0);
-    data->u = new QVector<int>(imagePixels,0);
-    data->v = new QVector<int>(imagePixels,0);
+    data->y = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    data->u = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
+    data->v = new QVector<int>(imagePixels/(samplingValue*samplingValue),0);
     YUVpixel yuvPixel;
     int i = 0;
-    for(int x = 0; x < image.size().width(); x++)
-        for(int y = 0; y < image.size().height(); y++)
+    for(int x = 0; x < image.size().width(); x+=samplingValue)
+        for(int y = 0; y < image.size().height(); y+=samplingValue)
         {
             yuvPixel = rgb2yuv(image.pixel(x,y));
             (*data->y)[i] = (int)(yuvPixel.y*nValue);

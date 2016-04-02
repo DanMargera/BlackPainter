@@ -4,7 +4,7 @@
 #include <QImage>
 #include "pidtools.h"
 
-static int samplingValue = 1;
+static int samplingValue = 8;
 
 enum ComparisonTypes {
     Rgb, Hsv, Yuv
