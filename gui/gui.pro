@@ -14,7 +14,6 @@ TEMPLATE = app
 
 SOURCES += \
     asyncprocess.cpp \
-    binaringfilterdialog.cpp \
     coloraction.cpp \
     colorbutton.cpp \
     currentsearchdialog.cpp \
@@ -37,12 +36,13 @@ SOURCES += \
     undostack.cpp \
     viewtoolbar.cpp \
     filtercontroller.cpp \
-    levelsfilterdialog.cpp
+    levelsfilterdialog.cpp \
+    brightnesscontrastfilterdialog.cpp \
+    thresholdfilterdialog.cpp
 
 HEADERS  += \
     abstractdraw.h \
     asyncprocess.h \
-    binaringfilterdialog.h \
     coloraction.h \
     colorbutton.h \
     currentsearchdialog.h \
@@ -64,7 +64,9 @@ HEADERS  += \
     undostack.h \
     viewtoolbar.h \
     filtercontroller.h \
-    levelsfilterdialog.h
+    levelsfilterdialog.h \
+    thresholdfilterdialog.h \
+    brightnesscontrastfilterdialog.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/release/ -lpid_lib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../pid_lib/debug/ -lpid_lib

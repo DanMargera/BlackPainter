@@ -352,7 +352,7 @@ QImage PIDTools::convolution_GS(QImage image)
     return result;
 }
 
-QImage PIDTools::binaring(QImage image, int value)
+QImage PIDTools::threshold(QImage image, int value)
 {
     for(int x = 0; x < image.size().width(); x++)
         for(int y = 0; y < image.size().height(); y++)
@@ -373,6 +373,29 @@ QImage PIDTools::RGB_Level(QImage image, qreal low, qreal high)
     {
         int v = (int) ((i - low)*255.0/(high - low)); //Calcula o valor prum determinado nivel
 
+        lookupTable[(int)i] = (v < 0 ? 0 :( v > 255 ? 255 : v)); // Saturador: garante um resultado entre 0 e 255
+    }
+
+    // Aplicacacao
+    for(int x = 0; x < image.size().width(); x++)
+        for(int y = 0; y < image.size().height(); y++)
+            image.setPixel(x,y,QColor(
+                               lookupTable[rgb(image.pixel(x,y)).r],
+                               lookupTable[rgb(image.pixel(x,y)).g],
+                               lookupTable[rgb(image.pixel(x,y)).b]
+                               ).rgba());
+    return image;
+}
+
+QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contrast)
+{
+    // Lookup table pra acelerar o calculo
+    int lookupTable[256];
+
+    // Calculo da lookup table
+    for(qreal i = 0; i < 256; i++)
+    {
+        int v = (int) i*contrast + brightness; //Calcula o valor prum determinado nivel
         lookupTable[(int)i] = (v < 0 ? 0 :( v > 255 ? 255 : v)); // Saturador: garante um resultado entre 0 e 255
     }
 

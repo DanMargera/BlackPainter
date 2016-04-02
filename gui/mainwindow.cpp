@@ -10,7 +10,7 @@
 #include "currentsearchdialog.h"
 #include <QProcess>
 #include "asyncprocess.h"
-#include "binaringfilterdialog.h"
+#include "thresholdfilterdialog.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -97,21 +97,22 @@ void MainWindow::createActions()
     drawActGroup->addAction(pencilAct );
 
     //View
-    zoomInAct = new QAction(QIcon(":/icons/zoom-tool.png"),tr("Zoom &In"), this);
-    zoomOutAct = new QAction(QIcon(":/icons/zoom-out.png"),tr("Zoom &Out"), this);
-    normalSizeAct = new QAction(tr("&Normal Size"), this);
+    zoomInAct      = new QAction(QIcon(":/icons/zoom-tool.png"),tr("Zoom &In"), this);
+    zoomOutAct     = new QAction(QIcon(":/icons/zoom-out.png"),tr("Zoom &Out"), this);
+    normalSizeAct  = new QAction(tr("&Normal Size"), this);
     fitToWindowAct = new QAction(tr("&Fit to Window"), this);
 
     zoomInAct->setShortcut(QKeySequence::ZoomIn);
     zoomOutAct->setShortcut(QKeySequence::ZoomOut);
 
     //Filters
-    negativeAct = new QAction(tr("&Negative"),this);
-    grayScaleAct = new QAction(tr("&Gray Scale"),this);
-    convolutionAct = new QAction(tr("&Convolution RGB"),this);
-    convolutionGSAct = new QAction(tr("C&onvolution GS"),this);
-    binaringAct = new QAction(tr("&Binaring"),this);
-    levelsAct = new QAction(tr("&Levels"),this);
+    negativeAct           = new QAction(tr("&Negative"),this);
+    grayScaleAct          = new QAction(tr("&Gray Scale"),this);
+    convolutionAct        = new QAction(tr("&Convolution RGB"),this);
+    convolutionGSAct      = new QAction(tr("C&onvolution GS"),this);
+    thresholdAct          = new QAction(tr("&Threshold"),this);
+    levelsAct             = new QAction(tr("&Levels"),this);
+    brightnessContrastAct = new QAction(tr("&Brightness/Contrast"),this);
 
     //Search
     currentAct = new QAction(tr("&Current Image"),this);
@@ -163,8 +164,9 @@ void MainWindow::createMenu()
     filterMenu->addAction(grayScaleAct);
     filterMenu->addAction(convolutionAct);
     filterMenu->addAction(convolutionGSAct);
-    filterMenu->addAction(binaringAct);
+    filterMenu->addAction(thresholdAct);
     filterMenu->addAction(levelsAct);
+    filterMenu->addAction(brightnessContrastAct);
 
     searchMenu->addAction(currentAct);
 
@@ -481,7 +483,7 @@ void MainWindow::filterAct(QAction* filterAction)
         image = PIDTools::convolution(*view->getQImage());
     else if(filterAction == convolutionGSAct)
         image = PIDTools::convolution_GS(*view->getQImage());
-    else if(filterAction == binaringAct)
+    else if(filterAction == thresholdAct)
     {
         filterController->execBinaring(*view->getQImage());
         return;
@@ -489,6 +491,11 @@ void MainWindow::filterAct(QAction* filterAction)
     else if(filterAction == levelsAct)
     {
         filterController->execLevels(*view->getQImage());
+        return;
+    }
+    else if(filterAction == brightnessContrastAct)
+    {
+        filterController->execBrightnessContrast(*view->getQImage());
         return;
     }
     else return;

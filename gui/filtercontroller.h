@@ -4,8 +4,9 @@
 #include <QObject>
 #include <QWidget>
 #include <QImage>
-#include "binaringfilterdialog.h"
+#include "thresholdfilterdialog.h"
 #include "levelsfilterdialog.h"
+#include "brightnesscontrastfilterdialog.h"
 
 
 class FilterController : public QObject
@@ -19,6 +20,7 @@ public:
     }
     void execBinaring(QImage image);
     void execLevels(QImage image);
+    void execBrightnessContrast(QImage image);
 
 public slots:
     void changed(QString filter);
@@ -32,8 +34,9 @@ private:
     QImage modified;
 
     // FIlters
-    BinaringFilterDialog * binaringFilterDialog;
-    LevelsFilterDialog * levelsFilterDialog;
+    ThresholdFilterDialog*          thresholdFilterDialog;
+    LevelsFilterDialog*             levelsFilterDialog;
+    BrightnessContrastFilterDialog* brightnessContrastFilterDialog;
 
 signals:
     void filterChanged(QImage image);

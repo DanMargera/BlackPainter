@@ -8,12 +8,12 @@
 #include <QDialog>
 #include <QImage>
 
-class BinaringFilterDialog : public QDialog
+class ThresholdFilterDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    BinaringFilterDialog(QWidget * parent = 0);
+    ThresholdFilterDialog(QWidget * parent = 0);
 
     int getValue() { return value; }
 
@@ -30,9 +30,9 @@ private:
     int min;
     int value;
 
-    QLabel      *binaringLabel;
+    QLabel      *thresholdLabel;
     QLineEdit   *valueLineEdit;
-    QSlider     *binaringSlider;
+    QSlider     *thresholdSlider;
     QPushButton *okBtn;
     QPushButton *cancelBtn;
 
@@ -40,8 +40,8 @@ private:
     void createWidgets();
 
 private slots:
-    void okBinaring();
-    void cancelBinaring();
+    void okThreshold();
+    void cancelThreshold();
     void valueEdited(QString value);
     void valueEdited(int value);
 };

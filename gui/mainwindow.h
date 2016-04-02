@@ -17,7 +17,7 @@
 #include "imageslider.h"
 #include "preferences.h"
 #include "spinboxaction.h"
-#include "binaringfilterdialog.h"
+#include "thresholdfilterdialog.h"
 #include "filtercontroller.h"
 
 class MainWindow : public QMainWindow
@@ -135,8 +135,9 @@ private:
     QAction *grayScaleAct;
     QAction *convolutionAct;
     QAction *convolutionGSAct;
-    QAction *binaringAct;
+    QAction *thresholdAct;
     QAction *levelsAct;
+    QAction *brightnessContrastAct;
 
     //Search
     QAction *currentAct;
