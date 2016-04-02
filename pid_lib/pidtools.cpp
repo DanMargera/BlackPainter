@@ -233,7 +233,7 @@ int PIDTools::rgb2gray_scale(QRgb rgb)
     int g = (rgb >>  8)&0xff;
     int b = rgb&0xff;
 
-    int bw = (r+b+g)/3;
+    int bw = r*0.3+g*0.59+b*0.11;
     a = (a << 8) + bw;
     a = (a << 8) + bw;
     a = (a << 8) + bw;
@@ -370,5 +370,29 @@ QImage PIDTools::binaring(QImage image, int value)
                 image.setPixel(x,y,0xff000000);
             else
                 image.setPixel(x,y,0xffffffff);
+    return image;
+}
+
+QImage PIDTools::RGB_Level(QImage image, qreal low, qreal high)
+{
+    // Lookup table pra acelerar o calculo
+    int lookupTable[256];
+
+    // Calculo da lookup table
+    for(qreal i = 0; i < 256; i++)
+    {
+        int v = (int) ((i - low)*255.0/(high - low)); //Calcula o valor prum determinado nivel
+
+        lookupTable[(int)i] = (v < 0 ? 0 :( v > 255 ? 255 : v)); // Saturador: garante um resultado entre 0 e 255
+    }
+
+    // Aplicacacao
+    for(int x = 0; x < image.size().width(); x++)
+        for(int y = 0; y < image.size().height(); y++)
+            image.setPixel(x,y,QColor(
+                               lookupTable[rgb(image.pixel(x,y)).r],
+                               lookupTable[rgb(image.pixel(x,y)).g],
+                               lookupTable[rgb(image.pixel(x,y)).b]
+                               ).rgba());
     return image;
 }

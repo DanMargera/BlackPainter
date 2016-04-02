@@ -1,15 +1,16 @@
 #include "filtercontroller.h"
 #include "pidtools.h"
+#include <QDebug>
 
 void FilterController::execBinaring(QImage image)
 {
     restore = image;
     modified = image;
 
-    BinaringFilterDialog * binaringFilterDialog = new BinaringFilterDialog(parent);
+    binaringFilterDialog = new BinaringFilterDialog(parent);
     connect(binaringFilterDialog,SIGNAL(rejected()),this,SLOT(canceled()));
     connect(binaringFilterDialog,SIGNAL(accepted()),this,SLOT(applied()));
-    connect(binaringFilterDialog,SIGNAL(changed(int)),this,SLOT(changed(int)));
+    connect(binaringFilterDialog,SIGNAL(changed(QString)),this,SLOT(changed(QString)));
 
     binaringFilterDialog->showNormal();
 
@@ -17,9 +18,34 @@ void FilterController::execBinaring(QImage image)
     filterChanged(modified);
 }
 
-void FilterController::changed(int arg0)
+void FilterController::execLevels(QImage image)
 {
-    modified = PIDTools::binaring(restore,arg0);
+    restore = image;
+    modified = image;
+
+    levelsFilterDialog = new LevelsFilterDialog(parent);
+    connect(levelsFilterDialog,SIGNAL(rejected()),this,SLOT(canceled()));
+    connect(levelsFilterDialog,SIGNAL(accepted()),this,SLOT(applied()));
+    connect(levelsFilterDialog,SIGNAL(changed(QString)),this,SLOT(changed(QString)));
+
+    levelsFilterDialog->showNormal();
+
+    modified = PIDTools::RGB_Level(restore,
+                                    levelsFilterDialog->getLowValue(),
+                                    levelsFilterDialog->getHighValue());
+    filterChanged(modified);
+}
+
+void FilterController::changed(QString filter)
+{
+    if(filter == BinaringFilterDialog::FILTER)
+        modified = PIDTools::binaring(restore,binaringFilterDialog->getValue());
+    else if(filter == LevelsFilterDialog::FILTER)
+        modified = PIDTools::RGB_Level(restore,
+                                        levelsFilterDialog->getLowValue(),
+                                        levelsFilterDialog->getHighValue());
+
+
     filterChanged(modified);
 }
 

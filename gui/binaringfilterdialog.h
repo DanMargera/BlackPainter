@@ -17,8 +17,10 @@ public:
 
     int getValue() { return value; }
 
+    static QString FILTER;
+
 signals:
-    void changed(int value);
+    void changed(QString filter);
     void ok();
     void cancel();
 

@@ -111,6 +111,7 @@ void MainWindow::createActions()
     convolutionAct = new QAction(tr("&Convolution RGB"),this);
     convolutionGSAct = new QAction(tr("C&onvolution GS"),this);
     binaringAct = new QAction(tr("&Binaring"),this);
+    levelsAct = new QAction(tr("&Levels"),this);
 
     //Search
     currentAct = new QAction(tr("&Current Image"),this);
@@ -163,6 +164,7 @@ void MainWindow::createMenu()
     filterMenu->addAction(convolutionAct);
     filterMenu->addAction(convolutionGSAct);
     filterMenu->addAction(binaringAct);
+    filterMenu->addAction(levelsAct);
 
     searchMenu->addAction(currentAct);
 
@@ -482,6 +484,11 @@ void MainWindow::filterAct(QAction* filterAction)
     else if(filterAction == binaringAct)
     {
         filterController->execBinaring(*view->getQImage());
+        return;
+    }
+    else if(filterAction == levelsAct)
+    {
+        filterController->execLevels(*view->getQImage());
         return;
     }
     else return;

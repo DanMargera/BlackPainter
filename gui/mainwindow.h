@@ -136,6 +136,7 @@ private:
     QAction *convolutionAct;
     QAction *convolutionGSAct;
     QAction *binaringAct;
+    QAction *levelsAct;
 
     //Search
     QAction *currentAct;
