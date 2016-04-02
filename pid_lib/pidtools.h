@@ -5,6 +5,7 @@
 #include <QVector>
 
 static const double nValue = 255; // VALOR USADO PRA NORMALIZAR OS RESULTADOS
+static const int imagePixels = 98304; // número de pixels das imagens do banco de dados
 
 struct RGB_Data
 {
@@ -27,11 +28,6 @@ struct YUV_Data
     QVector<int>* y;
     QVector<int>* u;
     QVector<int>* v;
-};
-
-struct Sampling_Data
-{
-    QVector<int>* s;
 };
 
 struct CMYK_Data
@@ -75,10 +71,6 @@ struct ImageCell
 {
     QString path;
     qreal distance;
-    friend bool operator<(const ImageCell& a, const ImageCell& b)
-    {
-        return a.distance < b.distance;
-    }
 };
 
 class PIDTools
@@ -91,9 +83,9 @@ public:
 
     static QImage negative(QImage image);
     static RGB_Data*    rgbHistogram(QImage image);
-    static HSV_Data*      hsvHistogram(QImage image);
-    static YUV_Data*      yuvHistogram(QImage image);
-    static Sampling_Data* samplingHistogram(QImage image);
+    static RGB_Data*    rgbData(QImage image);
+    static HSV_Data*      hsvData(QImage image);
+    static YUV_Data*      yuvData(QImage image);
     static CMYK_Data* cmykHistogram(QImage image);
     static CMYKpixel   rgb2cmyk(QRgb rgb);
     static RGBpixel    rgb(QRgb rgb);

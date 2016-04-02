@@ -1,4 +1,6 @@
 #include "metadata.h"
+#include <QtMath>
+#include <QDebug>
 
 #define ABS(x) ((x) > 0)?(x):-(x)
 
@@ -18,19 +20,12 @@ Comparable::Comparable(HSV_Data *hsv)
     dimensions = 3;
 }
 
-
 Comparable::Comparable(YUV_Data *yuv)
 {
     v1 = yuv->y;
     v2 = yuv->u;
     v3 = yuv->v;
     dimensions = 3;
-}
-
-Comparable::Comparable(Sampling_Data *sData)
-{
-    v1 = sData->s;
-    dimensions = 1;
 }
 
 Metadata::Metadata()
@@ -40,22 +35,17 @@ Metadata::Metadata()
 
 void Metadata::generateRGB(QImage image)
 {
-    rgb = PIDTools::rgbHistogram(image);
+    rgb = PIDTools::rgbData(image);
 }
 
 void Metadata::generateHSV(QImage image)
 {
-    hsv = PIDTools::hsvHistogram(image);
+    hsv = PIDTools::hsvData(image);
 }
 
 void Metadata::generateYUV(QImage image)
 {
-    yuv = PIDTools::yuvHistogram(image);
-}
-
-void Metadata::generateSampling(QImage image)
-{
-    samplingData = PIDTools::samplingHistogram(image);
+    yuv = PIDTools::yuvData(image);
 }
 
 qreal Metadata::compareTo(Metadata* m, int comparisonType, int measureType)
@@ -94,18 +84,6 @@ qreal Metadata::compareTo(Metadata* m, int comparisonType, int measureType)
         case Cosine:
             return cosineDistance(new Comparable(yuv), new Comparable(m->yuv));
         }
-    case Sampling:
-        switch(measureType) {
-        case Manhattan:
-            return manhattanDistance(new Comparable(samplingData), new Comparable(m->samplingData));
-        case Euclidean:
-            return euclideanDistance(new Comparable(samplingData), new Comparable(m->samplingData));
-        case Chess:
-            return chessDistance(new Comparable(samplingData), new Comparable(m->samplingData));
-        case Cosine:
-            return cosineDistance(new Comparable(samplingData), new Comparable(m->samplingData));
-        }
-        break;
     default:
         return 0;
     }
@@ -113,43 +91,96 @@ qreal Metadata::compareTo(Metadata* m, int comparisonType, int measureType)
 
 qreal Metadata::manhattanDistance(Comparable *c1, Comparable *c2)
 {
-    int distance = 0;
+    qreal distance = 0;
     switch(c1->dimensions) {
     case 3:
-        for (int i=0;i<nValue;i++) {
-            distance += ABS(((*c1->v1)[i]-(*c2->v1)[i]));
-            distance += ABS(((*c1->v2)[i]-(*c2->v2)[i]));
-            distance += ABS(((*c1->v3)[i]-(*c2->v3)[i]));
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += ABS((*c1->v1)[i]-(*c2->v1)[i]);
+            distance += ABS((*c1->v2)[i]-(*c2->v2)[i]);
+            distance += ABS((*c1->v3)[i]-(*c2->v3)[i]);
         }
         break;
     case 2:
-        for (int i=0;i<nValue;i++) {
-            distance += ABS(((*c1->v1)[i]-(*c2->v1)[i]));
-            distance += ABS(((*c1->v2)[i]-(*c2->v2)[i]));
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += ABS((*c1->v1)[i]-(*c2->v1)[i]);
+            distance += ABS((*c1->v2)[i]-(*c2->v2)[i]);
         }
+        break;
     case 1:
-        for (int i=0;i<nValue;i++) {
-            distance += ABS(((*c1->v1)[i]-(*c2->v1)[i]));
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += ABS((*c1->v1)[i]-(*c2->v1)[i]);
         }
+        break;
     }
     return distance;
 }
 
 qreal Metadata::euclideanDistance(Comparable *c1, Comparable *c2)
 {
-    Q_UNUSED(c1)
-    Q_UNUSED(c2)
+    qreal distance = 0;
+    switch(c1->dimensions) {
+    case 3:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += qPow((*c1->v1)[i]-(*c2->v1)[i] , 2);
+            distance += qPow((*c1->v2)[i]-(*c2->v2)[i] , 2);
+            distance += qPow((*c1->v3)[i]-(*c2->v3)[i] , 2);
+        }
+        break;
+    case 2:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += qPow((*c1->v1)[i]-(*c2->v1)[i] , 2);
+            distance += qPow((*c1->v2)[i]-(*c2->v2)[i] , 2);
+        }
+        break;
+    case 1:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += qPow((*c1->v1)[i]-(*c2->v1)[i] , 2);
+        }
+        break;
+    }
+    return qSqrt(distance);
 }
 
 qreal Metadata::chessDistance(Comparable *c1, Comparable *c2)
 {
-    Q_UNUSED(c1)
-    Q_UNUSED(c2)
+    qreal distance = 0;
+    switch(c1->dimensions) {
+    case 3:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += qMax(qMax(ABS((*c1->v1)[i]-(*c2->v1)[i]), ABS((*c1->v2)[i]-(*c2->v2)[i])), ABS((*c1->v3)[i]-(*c2->v3)[i]));
+        }
+        break;
+    case 2:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += qMax(ABS((*c1->v1)[i]-(*c2->v1)[i]), ABS((*c1->v2)[i]-(*c2->v2)[i]));
+        }
+        break;
+    case 1:
+        for (int i=0;i<c2->v1->size();i++) {
+            distance += ABS(((*c1->v1)[i]-(*c2->v1)[i]));
+        }
+        break;
+    }
+    return distance;
 }
 
 qreal Metadata::cosineDistance(Comparable *c1, Comparable *c2)
 {
-    Q_UNUSED(c1)
-    Q_UNUSED(c2)
+    qreal distance = 0, numerador = 0, sqr1 = 0, sqr2 = 0;
+    switch(c1->dimensions) {
+    case 3:
+        for (int i=0;i<c2->v1->size();i++) {
+            numerador += (*c1->v1)[i]*(*c2->v1)[i] + (*c1->v2)[i]*(*c2->v2)[i] + (*c1->v3)[i]*(*c2->v3)[i];
+            sqr1 += qPow((*c1->v1)[i], 2) + qPow((*c1->v2)[i], 2) + qPow((*c1->v3)[i], 2);
+            sqr2 += qPow((*c2->v1)[i], 2) + qPow((*c2->v2)[i], 2) + qPow((*c2->v3)[i], 2);
+        }
+        break;
+    case 2:
+        break;
+    case 1:
+        break;
+    }
+    distance = (1-( numerador/(qSqrt(sqr1)*qSqrt(sqr2)) ));
+    return distance;
 }
 

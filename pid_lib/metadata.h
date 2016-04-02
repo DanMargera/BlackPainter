@@ -4,8 +4,10 @@
 #include <QImage>
 #include "pidtools.h"
 
+static int samplingValue = 8;
+
 enum ComparisonTypes {
-    Rgb, Hsv, Yuv, Sampling
+    Rgb, Hsv, Yuv
 };
 enum MeasureTypes {
     Manhattan, Euclidean, Chess, Cosine
@@ -17,7 +19,6 @@ public:
     Comparable(RGB_Data* rgb);
     Comparable(HSV_Data* hsv);
     Comparable(YUV_Data* yuv);
-    Comparable(Sampling_Data* sData);
 
     int dimensions;
     QVector<int>* v1;
@@ -33,12 +34,10 @@ public:
     void setRGB(RGB_Data* rgbData) { rgb = rgbData; }
     void setHSV(HSV_Data* hsvData) { hsv = hsvData; }
     void setYUV(YUV_Data* yuvData) { yuv = yuvData; }
-    void setSampling(Sampling_Data* sData) { samplingData = sData; }
 
     void generateRGB(QImage image);
     void generateYUV(QImage image);
     void generateHSV(QImage image);
-    void generateSampling(QImage image);
     qreal compareTo(Metadata* m, int comparisonType, int measureType);
 
 private:
@@ -50,7 +49,6 @@ private:
     RGB_Data* rgb;
     HSV_Data* hsv;
     YUV_Data* yuv;
-    Sampling_Data* samplingData;
 };
 
 #endif // METADATA_H
