@@ -42,8 +42,8 @@ void Graph::paintEvent(QPaintEvent * event)
 
 
     // Da um jeito nas coordenadas
-    painter.translate(0,height());
-    painter.scale(1,-1);
+//    painter.translate(0,height());
+//    painter.scale(1,-1);
 
     painter.setPen(QPen(QBrush(QColor(22,22,22)),0.5,Qt::SolidLine,Qt::RoundCap));
     for(qreal i = 0; i <= rHeight; i += rHeight/10.0)
@@ -65,10 +65,7 @@ void Graph::paintEvent(QPaintEvent * event)
     painter.setPen(QColor(0,0,255));
     painter.drawPolyline(graph);
 
-    painter.setPen(QPen(QBrush(QColor(0,0,255)),5,Qt::SolidLine,Qt::RoundCap));
-    painter.drawPoints(graph);
-
-    qreal bolinha = 10;
+    qreal bolinha = 9;
 
     painter.setBrush(QBrush(QColor(0,0,0,0)));
     painter.setPen(QPen(QBrush(QColor(255,0,0)),0.5,Qt::SolidLine,Qt::SquareCap));
@@ -76,9 +73,12 @@ void Graph::paintEvent(QPaintEvent * event)
 
     qreal xs = (x < rWidth/12.0 ? rWidth/12.0 : x > rWidth*11.0/12.0 ? rWidth*11.0/12.0 : x);
 
-    xs = xs*12/10 - rWidth/12.0-bolinha/2.0;
+    xs = (xs- rWidth/12.0)*12/10 ;
 
-    painter.drawRect(xs-bolinha/4,intersect(graph,xs)-bolinha*3/4,bolinha,bolinha);
+    qreal yVal = intersect(graph,xs);
+    painter.drawRect(xs-bolinha/2.0, yVal-bolinha/2.0,bolinha,bolinha);
+    painter.drawLine(QLineF(0,yVal,rWidth,yVal));
+    painter.drawText(rWidth+3, yVal, QString::number((int)(((rHeight-yVal)/rHeight)*100)));
 
     painter.resetTransform();
     painter.setRenderHint(QPainter::Antialiasing,false);
@@ -132,4 +132,11 @@ qreal Graph::intersect(QPolygonF p, qreal x)
         return p.first().y();
     else
         return p.last().y();
+}
+
+void Graph::setData(QVector<QPointF> d) {
+    this->data = d;
+    for (int i=0;i<data.length();i++) {
+        data[i].setY(100-data[i].y());
+    }
 }

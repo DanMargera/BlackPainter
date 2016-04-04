@@ -97,8 +97,8 @@ QWidget* SidePanel::createRecallGraph()
     layout->addWidget(graph);
 
 
-//    QVector<QPointF> data;
-//    data << QPointF(0,50)
+    QVector<QPointF> data;
+    data << QPointF(0,0);
 //         << QPointF(10,100)
 //         << QPointF(20,67)
 //         << QPointF(30,50)
@@ -110,7 +110,7 @@ QWidget* SidePanel::createRecallGraph()
 //         << QPointF(90,0)
 //         << QPointF(100,100);
 
-//    graph->setData(data);
+    graph->setData(data);
 
 
 

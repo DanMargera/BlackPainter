@@ -628,16 +628,17 @@ void MainWindow::loadOrderedImages(QList<ImageCell*> list, int nResults)
     qreal revocacao = 0;
     qreal precisao = 0;
 
-    int step = nResults/10;
+    int step = 0;
 
 
     imageSlider->clear();
     QListIterator<ImageCell*> it(list);
     ImageCell* ic;
     QVector<QPointF> data;
-    while(it.hasNext() && recuperados < nResults) {
+    while(it.hasNext()) {
         ic = it.next();
         //qDebug() << ic->distance;
+        if(recuperados < nResults)
         imageSlider->appendImagePath(ic->path);
 
         int n = QFileInfo(ic->path).baseName().toInt();
@@ -645,12 +646,12 @@ void MainWindow::loadOrderedImages(QList<ImageCell*> list, int nResults)
         recuperados++;
 
         //qDebug() << relevante;
-        if((int)recuperados%step == 0)
-        {
+        //if((int)recuperados%step == 0)
+        //{
             revocacao = relevante/100.0;
             precisao = relevante/recuperados*100;
             data << QPointF(relevante,precisao);
-        }
+        //}
 
     }
 

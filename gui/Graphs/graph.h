@@ -13,7 +13,7 @@ public:
 
     Graph(QWidget * parent = 0);
 
-    void setData(QVector<QPointF> data) { this->data = data; }
+    void setData(QVector<QPointF> data);
     QVector<QPointF> getData()          { return data;       }
 
 protected:
