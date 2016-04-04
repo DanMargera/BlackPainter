@@ -13,9 +13,9 @@ public:
 
     Graph(QWidget * parent = 0);
 
-    void setData(QVector<QPointF> data);
+    void setData(QVector<QPointF> data) { this->data = data; }
     QVector<QPointF> getData()          { return data;       }
- 
+
 protected:
     void paintEvent(QPaintEvent * event);
     void mouseDoubleClickEvent(QMouseEvent * event);
@@ -28,7 +28,7 @@ private:
     qreal x;
 
 signals:
-	void mouseDoubleClick();
+    void mouseDoubleClick();
 };
 
 #endif // GRAPH_H
