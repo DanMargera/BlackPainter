@@ -73,7 +73,7 @@ private:
     void loadImage(QImage* imageObject);
     void setupTitle();
     void loadImages();
-    void loadOrderedImages(QList<ImageCell*> list);
+    void loadOrderedImages(QList<ImageCell*> list, int nResults);
 
     QMenu* fileMenu;
     QMenu* editMenu;

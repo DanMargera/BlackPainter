@@ -10,6 +10,7 @@
 #include <Dialog/currentsearchdialog.h>
 #include <QProcess>
 #include <asyncprocess.h>
+#include <QFileInfo>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -514,6 +515,10 @@ void MainWindow::searchAct(QAction* searchAction)
     if(searchAction == currentAct) {
         CurrentSearchDialog newDialog(this);
         if(!newDialog.exec()) return;
+
+        //Armazena o numero de resultados desejados
+        int nResults = newDialog.numberOfResults();
+
         // faz a busca com newDialog.selectedComparisonType e selectedDistanceMethod
         QDirIterator it(preferences->getPath(), QStringList() << "*.data", QDir::Files, QDirIterator::NoIteratorFlags);
 
@@ -557,7 +562,8 @@ void MainWindow::searchAct(QAction* searchAction)
             list << tempIc;
         }
         qSort(list.begin(), list.end(), compareImageCell);
-        loadOrderedImages(list);
+
+        loadOrderedImages(list,nResults);
     }
 }
 
@@ -613,17 +619,43 @@ void MainWindow::loadImages()
  * Recebe uma lista de células contendo o Path de cada imagem,
  * e carrega no imageSlider na ordem da lista;
  * */
-void MainWindow::loadOrderedImages(QList<ImageCell*> list)
+void MainWindow::loadOrderedImages(QList<ImageCell*> list, int nResults)
 {
+    QFileInfo fileInfo(list.first()->path);
+    int group = fileInfo.baseName().toInt()/100*100;
+    qreal recuperados = 0;
+    qreal relevante = 0;
+    qreal revocacao = 0;
+    qreal precisao = 0;
+
+    int step = nResults/10;
+
 
     imageSlider->clear();
     QListIterator<ImageCell*> it(list);
     ImageCell* ic;
-    while(it.hasNext()) {
+    QVector<QPointF> data;
+    while(it.hasNext() && recuperados < nResults) {
         ic = it.next();
         //qDebug() << ic->distance;
         imageSlider->appendImagePath(ic->path);
+
+        int n = QFileInfo(ic->path).baseName().toInt();
+        if(group <= n && n < group + 100) relevante++;
+        recuperados++;
+
+        //qDebug() << relevante;
+        if((int)recuperados%step == 0)
+        {
+            revocacao = relevante/100.0;
+            precisao = relevante/recuperados*100;
+            data << QPointF(relevante,precisao);
+        }
+
     }
+
+    qDebug() << data;
+    sidePanel->setGraphData(data);
 }
 
 void MainWindow::createControllers()

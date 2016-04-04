@@ -97,26 +97,31 @@ QWidget* SidePanel::createRecallGraph()
     layout->addWidget(graph);
 
 
-    QVector<QPointF> data;
-    data << QPointF(0,50)
-         << QPointF(10,100)
-         << QPointF(20,67)
-         << QPointF(30,50)
-         << QPointF(40,40)
-         << QPointF(50,33)
-         << QPointF(60,0)
-         << QPointF(70,0)
-         << QPointF(80,0)
-         << QPointF(90,0)
-         << QPointF(100,100);
+//    QVector<QPointF> data;
+//    data << QPointF(0,50)
+//         << QPointF(10,100)
+//         << QPointF(20,67)
+//         << QPointF(30,50)
+//         << QPointF(40,40)
+//         << QPointF(50,33)
+//         << QPointF(60,0)
+//         << QPointF(70,0)
+//         << QPointF(80,0)
+//         << QPointF(90,0)
+//         << QPointF(100,100);
 
-    graph->setData(data);
+//    graph->setData(data);
 
 
 
     layout->addSpacerItem(new QSpacerItem(1,1,QSizePolicy::Minimum,QSizePolicy::Expanding));
 
     return recallWidget;
+}
+
+void SidePanel::setGraphData(QVector <QPointF> data)
+{
+    graph->setData(data);
 }
 
 

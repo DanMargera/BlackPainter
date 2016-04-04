@@ -16,6 +16,7 @@ public:
     void setScene(QGraphicsScene* scene);
     QGraphicsView* getGraphicsView() { return graphicsView; }
     Histogram* getHistogram()        { return histogram;    }
+    void setGraphData(QVector <QPointF> data);
 
 private:
     QGraphicsView* graphicsView;

@@ -4,8 +4,8 @@
 CurrentSearchDialog::CurrentSearchDialog(QWidget * parent)
     : QDialog(parent)
 {
-    setMaximumSize(QSize(220,130));
-    setMinimumSize(QSize(220,130));
+    setMaximumSize(QSize(220,200));
+    setMinimumSize(QSize(220,200));
     setWindowTitle(tr("Similar Images"));
 
     createWidgets();
@@ -29,7 +29,7 @@ void CurrentSearchDialog::createWidgets()
     distanceBox->addItem(tr("Cosine"));
 
     samplingLabel = new QLabel(tr("Sampling:"));
-    valueLineEdit    = new QLineEdit(QString::number(8),this);
+    valueLineEdit = new QLineEdit(QString::number(8),this);
     valueLineEdit->setValidator(new QIntValidator(8,64,this));
     valueLineEdit->setReadOnly(true);
     samplingSlider = new QSlider(this);
@@ -37,6 +37,16 @@ void CurrentSearchDialog::createWidgets()
     samplingSlider->setMinimum(3);
     samplingSlider->setMaximum(6);
     samplingSlider->setOrientation(Qt::Horizontal);
+
+    nResultsLabel = new QLabel(tr("Results: "));
+    nResultsBox   = new QComboBox;
+    nResultsBox->addItem("10");
+    nResultsBox->addItem("20");
+    nResultsBox->addItem("30");
+    nResultsBox->addItem("50");
+    nResultsBox->addItem("100");
+    nResultsBox->addItem("500");
+    nResultsBox->addItem("1000");
 
     searchBtn       = new QPushButton (tr("Search"),this);
     cancelBtn       = new QPushButton (tr("Cancel"),this);
@@ -61,8 +71,11 @@ void CurrentSearchDialog::createLayout()
     layout->addWidget(valueLineEdit,3,2,1,1);
     layout->addWidget(samplingSlider,4,1,1,2);
 
-    layout->addWidget(cancelBtn,5,0,1,2, Qt::AlignBottom | Qt::AlignLeft);
-    layout->addWidget(searchBtn,5,2,1,2, Qt::AlignBottom | Qt::AlignRight);
+    layout->addWidget(nResultsLabel,5,0,1,2,Qt::AlignRight);
+    layout->addWidget(nResultsBox,5,2,1,2);
+
+    layout->addWidget(cancelBtn,6,0,1,2, Qt::AlignBottom | Qt::AlignLeft);
+    layout->addWidget(searchBtn,6,2,1,2, Qt::AlignBottom | Qt::AlignRight);
 
     setLayout(layout);
 }
@@ -108,5 +121,10 @@ void CurrentSearchDialog::valueEdited(int value)
 {
     samplingValue = qPow(2, value);
     valueEdited(QString::number(samplingValue));
+}
+
+int CurrentSearchDialog::numberOfResults()
+{
+    return nResultsBox->currentText().toInt();
 }
 

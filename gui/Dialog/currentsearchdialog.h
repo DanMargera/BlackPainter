@@ -19,6 +19,7 @@ public:
     CurrentSearchDialog(QWidget * parent = 0);
     int selectedComparisonType(); // retorna o tipo de histograma a ser comparado
     int selectedDistanceMethod();  // retorna o tipo de cálculo de distancia entre histogramas
+    int numberOfResults();
 
 private:
     QLabel*      comparisonLabel;
@@ -30,6 +31,9 @@ private:
     QLabel*      samplingLabel;
     QLineEdit*   valueLineEdit;
     QSlider*     samplingSlider;
+
+    QLabel*      nResultsLabel;
+    QComboBox*   nResultsBox;
 
     QPushButton* searchBtn;
     QPushButton* cancelBtn;
