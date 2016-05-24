@@ -18,7 +18,8 @@ HEADERS += \
     metadata.h \
     metadatafile.h \
     multi_vector.h \
-    pidtools.h
+    pidtools.h \
+    complex.h
 
 unix {
     target.path = /usr/lib
