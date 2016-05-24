@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include <QVector>
+#include "complex.h"
 
 static const double nValue = 255; // VALOR USADO PRA NORMALIZAR OS RESULTADOS
 static const int imagePixels = 98304; // número de pixels das imagens do banco de dados
@@ -98,6 +99,10 @@ public:
     static QImage threshold(QImage image, int value);
     static QImage RGB_Level(QImage image, qreal low, qreal high);
     static QImage brightnessContrast(QImage image, qreal brightness, qreal contrast);
+    static QImage fft(QImage image);
+    static QImage ifft(QImage image);
+
+
 
 private:
     QImage* image;

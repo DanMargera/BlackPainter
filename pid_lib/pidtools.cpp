@@ -1,13 +1,18 @@
 #include "metadata.h"
 #include <QColor>
 #include <cmath>
+#include <math.h>
 #include <QDebug>
+#include "complex.h"
 
 const double wr = 0.299;
 const double wb = 0.114;
 const double wg = 1-wr-wb;
 const double uMax = 0.436;
 const double vMax = 0.615;
+
+CMatrix matrix(1,1);
+double fftMax = 1;
 
 RGB_Data* PIDTools::rgbHistogram(QImage image)
 {
@@ -417,5 +422,44 @@ QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contra
                                lookupTable[rgb(image.pixel(x,y)).g],
                                lookupTable[rgb(image.pixel(x,y)).b]
                                ).rgba());
+    return image;
+}
+
+QImage PIDTools::fft(QImage image)
+{
+    matrix = CMatrix(image.width(),image.height());
+    for(int x = 0; x < matrix.width(); x++)
+        for(int y = 0; y< matrix.height(); y++)
+            matrix[x][y] = image.pixel(x,y)&0x000000FF;
+
+    matrix = FFT::fft2d(matrix);
+    fftMax = log10(matrix.maxAbs());
+
+    for(int x = 0; x < matrix.width(); x++)
+        for(int y = 0; y< matrix.height(); y++) {
+            double aux = 255.0*log10(matrix[x][y].abs())/fftMax;
+            image.setPixel(x,y,QColor(aux,aux,aux).rgba());
+        }
+
+    return image;//Para nao da pau
+}
+
+QImage PIDTools::ifft(QImage image)
+{
+    for(int x = 0; x < matrix.width(); x++)
+        for(int y = 0; y< matrix.height(); y++) {
+            double aux = image.pixel(x,y)&0x000000FF;
+            aux *= fftMax/255.0;
+            aux = pow(10.0,aux);
+            matrix[x][y].setAbs(aux);
+        }
+
+    matrix = FFT::ifft2d(matrix);
+
+    for(int x = 0; x < matrix.width(); x++)
+        for(int y = 0; y< matrix.height(); y++) {
+            double aux = matrix[x][y].abs();
+            image.setPixel(x,y,QColor(aux,aux,aux).rgba());
+        }
     return image;
 }

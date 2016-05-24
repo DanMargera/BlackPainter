@@ -1,6 +1,10 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
+#include <qmath.h>
+#include <math.h>
+#include <QString>
+
 class Complex
 {
 public:
@@ -16,6 +20,13 @@ public:
     Complex conj ()           { return Complex(r,-i); }
     double  abs  ()           { return sqrt(r*r+i*i); }
     double  phase()           { return atan2(i,r); }
+    void    setAbs(double a)
+    {
+        double rate = a/abs();
+        r = r*rate;
+        i = i*rate;
+    }
+
 
     Complex operator+(Complex c) { return sum(c);  }
     Complex operator-(Complex c) { return sub(c);  }

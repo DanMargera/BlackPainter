@@ -113,6 +113,8 @@ void MainWindow::createActions()
     thresholdAct          = new QAction(tr("&Threshold"),this);
     levelsAct             = new QAction(tr("&Levels"),this);
     brightnessContrastAct = new QAction(tr("&Brightness/Contrast"),this);
+    fft2dAct              = new QAction(tr("&FFT2D"),this);
+    ifft2dAct             = new QAction(tr("&IFFT2D"),this);
 
     //Search
     currentAct = new QAction(tr("&Current Image"),this);
@@ -167,6 +169,8 @@ void MainWindow::createMenu()
     filterMenu->addAction(thresholdAct);
     filterMenu->addAction(levelsAct);
     filterMenu->addAction(brightnessContrastAct);
+    filterMenu->addAction(fft2dAct);
+    filterMenu->addAction(ifft2dAct);
 
     searchMenu->addAction(currentAct);
 
@@ -503,12 +507,23 @@ void MainWindow::filterAct(QAction* filterAction)
         filterController->execBrightnessContrast(*view->getQImage());
         return;
     }
+    else if(filterAction == fft2dAct)
+    {
+        image = PIDTools::fft(*view->getQImage());
+    }
+    else if(filterAction == ifft2dAct)
+    {
+        image = PIDTools::ifft(*view->getQImage());
+    }
     else return;
 
     view->setQImage(&image);
     view->setModifed(true);
     doIt();
 }
+
+
+
 
 void MainWindow::searchAct(QAction* searchAction)
 {

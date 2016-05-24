@@ -137,6 +137,9 @@ private:
     QAction *thresholdAct;
     QAction *levelsAct;
     QAction *brightnessContrastAct;
+    QAction *fft2dAct;
+    QAction *ifft2dAct;
+
 
     //Search
     QAction *currentAct;
@@ -153,6 +156,8 @@ private:
 
     //Controllers
     FilterController * filterController;
+
+
 };
 
 #endif // MAINWINDOW_H
