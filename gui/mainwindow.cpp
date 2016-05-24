@@ -113,6 +113,10 @@ void MainWindow::createActions()
     thresholdAct          = new QAction(tr("&Threshold"),this);
     levelsAct             = new QAction(tr("&Levels"),this);
     brightnessContrastAct = new QAction(tr("&Brightness/Contrast"),this);
+    maximoAct             = new QAction(tr("Ma&ximo"),this);
+    minimoAct             = new QAction(tr("&Minimo"),this);
+    medianaAct            = new QAction(tr("M&ediana"),this);
+    mediaAct              = new QAction(tr("Me&dia"),this);
     fft2dAct              = new QAction(tr("&FFT2D"),this);
     ifft2dAct             = new QAction(tr("&IFFT2D"),this);
 
@@ -169,6 +173,10 @@ void MainWindow::createMenu()
     filterMenu->addAction(thresholdAct);
     filterMenu->addAction(levelsAct);
     filterMenu->addAction(brightnessContrastAct);
+    filterMenu->addAction(maximoAct);
+    filterMenu->addAction(minimoAct);
+    filterMenu->addAction(medianaAct);
+    filterMenu->addAction(mediaAct);
     filterMenu->addAction(fft2dAct);
     filterMenu->addAction(ifft2dAct);
 
@@ -507,14 +515,18 @@ void MainWindow::filterAct(QAction* filterAction)
         filterController->execBrightnessContrast(*view->getQImage());
         return;
     }
+    else if(filterAction == maximoAct)
+        image = PIDTools::maximo(*view->getQImage());
+    else if(filterAction == minimoAct)
+        image = PIDTools::minimo(*view->getQImage());
+    else if(filterAction == medianaAct)
+        image = PIDTools::mediana(*view->getQImage());
+    else if(filterAction == mediaAct)
+        image = PIDTools::media(*view->getQImage());
     else if(filterAction == fft2dAct)
-    {
         image = PIDTools::fft(*view->getQImage());
-    }
     else if(filterAction == ifft2dAct)
-    {
         image = PIDTools::ifft(*view->getQImage());
-    }
     else return;
 
     view->setQImage(&image);

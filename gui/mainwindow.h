@@ -137,6 +137,10 @@ private:
     QAction *thresholdAct;
     QAction *levelsAct;
     QAction *brightnessContrastAct;
+    QAction *maximoAct;
+    QAction *minimoAct;
+    QAction *medianaAct;
+    QAction *mediaAct;
     QAction *fft2dAct;
     QAction *ifft2dAct;
 

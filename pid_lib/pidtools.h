@@ -99,6 +99,10 @@ public:
     static QImage threshold(QImage image, int value);
     static QImage RGB_Level(QImage image, qreal low, qreal high);
     static QImage brightnessContrast(QImage image, qreal brightness, qreal contrast);
+    static QImage maximo(QImage image);
+    static QImage minimo(QImage image);
+    static QImage mediana(QImage image);
+    static QImage media(QImage image);
     static QImage fft(QImage image);
     static QImage ifft(QImage image);
 

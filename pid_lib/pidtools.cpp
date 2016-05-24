@@ -425,6 +425,26 @@ QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contra
     return image;
 }
 
+QImage PIDTools::maximo(QImage image)
+{
+    return image;
+}
+
+QImage PIDTools::minimo(QImage image)
+{
+    return image;
+}
+
+QImage PIDTools::mediana(QImage image)
+{
+    return image;
+}
+
+QImage PIDTools::media(QImage image)
+{
+    return image;
+}
+
 QImage PIDTools::fft(QImage image)
 {
     matrix = CMatrix(image.width(),image.height());
