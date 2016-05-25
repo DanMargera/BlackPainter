@@ -427,22 +427,111 @@ QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contra
 
 QImage PIDTools::maximo(QImage image)
 {
-    return image;
+    QImage result(image.size(),image.format());
+
+    RGBpixel pixel;
+
+    int maxR, maxG, maxB;
+
+    for(int x = 1; x < image.size().width()-1; x++)
+        for(int y = 1; y < image.size().height()-1; y++)
+        {
+            maxR = 0;
+            maxG = 0;
+            maxB = 0;
+            for(int z = 0; z < 9; z++) {
+                pixel = rgb(image.pixel(x-1+(z%3), y-1+(z/3)));
+                maxR = pixel.r>maxR?pixel.r:maxR;
+                maxG = pixel.g>maxG?pixel.g:maxG;
+                maxB = pixel.b>maxB?pixel.b:maxB;
+            }
+
+            result.setPixel(x,y,QColor(maxR, maxG, maxB).rgba());
+        }
+    return result;
 }
 
 QImage PIDTools::minimo(QImage image)
 {
-    return image;
+    QImage result(image.size(),image.format());
+
+    RGBpixel pixel;
+
+    int minR, minG, minB;
+
+    for(int x = 1; x < image.size().width()-1; x++)
+        for(int y = 1; y < image.size().height()-1; y++)
+        {
+            minR = 255;
+            minG = 255;
+            minB = 255;
+            for(int z = 0; z < 9; z++) {
+                pixel = rgb(image.pixel(x-1+(z%3), y-1+(z/3)));
+                minR = pixel.r<minR?pixel.r:minR;
+                minG = pixel.g<minG?pixel.g:minG;
+                minB = pixel.b<minB?pixel.b:minB;
+            }
+
+            result.setPixel(x,y,QColor(minR, minG, minB).rgba());
+        }
+    return result;
 }
 
 QImage PIDTools::mediana(QImage image)
 {
-    return image;
+    QImage result(image.size(),image.format());
+
+    RGBpixel pixel;
+
+    QVector<int> vecR;
+    QVector<int> vecG;
+    QVector<int> vecB;
+
+    for(int x = 1; x < image.size().width()-1; x++)
+        for(int y = 1; y < image.size().height()-1; y++)
+        {
+            vecR.clear();
+            vecG.clear();
+            vecB.clear();
+            for(int z = 0; z < 9; z++) {
+                pixel = rgb(image.pixel(x-1+(z%3), y-1+(z/3)));
+                vecR << pixel.r;
+                vecG << pixel.g;
+                vecB << pixel.b;
+            }
+            qSort(vecR.begin(), vecR.end());
+            qSort(vecG.begin(), vecG.end());
+            qSort(vecB.begin(), vecB.end());
+
+            result.setPixel(x,y,QColor(vecR[4], vecG[4], vecB[4]).rgba());
+        }
+    return result;
 }
 
 QImage PIDTools::media(QImage image)
 {
-    return image;
+    QImage result(image.size(),image.format());
+
+    RGBpixel pixel;
+
+    int medR, medG, medB;
+
+    for(int x = 1; x < image.size().width()-1; x++)
+        for(int y = 1; y < image.size().height()-1; y++)
+        {
+            medR = 0;
+            medG = 0;
+            medB = 0;
+            for(int z = 0; z < 9; z++) {
+                pixel = rgb(image.pixel(x-1+(z%3), y-1+(z/3)));
+                medR += pixel.r;
+                medG += pixel.g;
+                medB += pixel.b;
+            }
+
+            result.setPixel(x,y,QColor((medR/9), (medG/9), (medB/9)).rgba());
+        }
+    return result;
 }
 
 QImage PIDTools::fft(QImage image)
