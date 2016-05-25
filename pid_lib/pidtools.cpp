@@ -3,6 +3,7 @@
 #include <cmath>
 #include <math.h>
 #include <QDebug>
+#include <QElapsedTimer>
 #include "complex.h"
 
 const double wr = 0.299;
@@ -247,22 +248,35 @@ int PIDTools::rgb2gray_scale(QRgb rgb)
 
 QImage PIDTools::negative(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     for(int x = 0; x < image.size().width(); x++)
         for(int y = 0; y < image.size().height(); y++)
             image.setPixel(x,y,(~image.pixel(x,y))|0xff000000);
+
+    qDebug() << timer.elapsed();
     return image;
 }
 
 QImage PIDTools::gray_scale(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     for(int x = 0; x < image.size().width(); x++)
         for(int y = 0; y < image.size().height(); y++)
             image.setPixel(x,y,rgb2gray_scale(image.pixel(x,y)));
+
+    qDebug() << timer.elapsed();
     return image;
 }
 
 QImage PIDTools::convolution(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QImage result(image.size(),image.format());
     QVector <int> kernel;
     /*
@@ -324,11 +338,16 @@ QImage PIDTools::convolution(QImage image)
             pixel.g = 0;
             pixel.b = 0;
         }
+
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::convolution_GS(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     image = gray_scale(image);
     QImage result(image.size(),image.format());
     QVector <int> kernel;
@@ -364,22 +383,30 @@ QImage PIDTools::convolution_GS(QImage image)
 
             pixel = 0;
         }
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::threshold(QImage image, int value)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     for(int x = 0; x < image.size().width(); x++)
         for(int y = 0; y < image.size().height(); y++)
             if(rgb(PIDTools::rgb2gray_scale(image.pixel(x,y))).r <= value)
                 image.setPixel(x,y,0xff000000);
             else
                 image.setPixel(x,y,0xffffffff);
+    qDebug() << timer.elapsed();
     return image;
 }
 
 QImage PIDTools::RGB_Level(QImage image, qreal low, qreal high)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     // Lookup table pra acelerar o calculo
     int lookupTable[256];
 
@@ -399,11 +426,16 @@ QImage PIDTools::RGB_Level(QImage image, qreal low, qreal high)
                                lookupTable[rgb(image.pixel(x,y)).g],
                                lookupTable[rgb(image.pixel(x,y)).b]
                                ).rgba());
+
+    qDebug() << timer.elapsed();
     return image;
 }
 
 QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contrast)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     // Lookup table pra acelerar o calculo
     int lookupTable[256];
 
@@ -422,11 +454,16 @@ QImage PIDTools::brightnessContrast(QImage image, qreal brightness, qreal contra
                                lookupTable[rgb(image.pixel(x,y)).g],
                                lookupTable[rgb(image.pixel(x,y)).b]
                                ).rgba());
+
+    qDebug() << timer.elapsed();
     return image;
 }
 
 QImage PIDTools::maximo(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QImage result(image.size(),image.format());
 
     RGBpixel pixel;
@@ -448,11 +485,16 @@ QImage PIDTools::maximo(QImage image)
 
             result.setPixel(x,y,QColor(maxR, maxG, maxB).rgba());
         }
+
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::minimo(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QImage result(image.size(),image.format());
 
     RGBpixel pixel;
@@ -474,11 +516,16 @@ QImage PIDTools::minimo(QImage image)
 
             result.setPixel(x,y,QColor(minR, minG, minB).rgba());
         }
+
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::mediana(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QImage result(image.size(),image.format());
 
     RGBpixel pixel;
@@ -505,11 +552,16 @@ QImage PIDTools::mediana(QImage image)
 
             result.setPixel(x,y,QColor(vecR[4], vecG[4], vecB[4]).rgba());
         }
+
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::media(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QImage result(image.size(),image.format());
 
     RGBpixel pixel;
@@ -531,11 +583,16 @@ QImage PIDTools::media(QImage image)
 
             result.setPixel(x,y,QColor((medR/9), (medG/9), (medB/9)).rgba());
         }
+
+    qDebug() << timer.elapsed();
     return result;
 }
 
 QImage PIDTools::fft(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     matrix = CMatrix(image.width(),image.height());
     for(int x = 0; x < matrix.width(); x++)
         for(int y = 0; y< matrix.height(); y++)
@@ -550,11 +607,15 @@ QImage PIDTools::fft(QImage image)
             image.setPixel(x,y,QColor(aux,aux,aux).rgba());
         }
 
+    qDebug() << timer.elapsed();
     return image;//Para nao da pau
 }
 
 QImage PIDTools::ifft(QImage image)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     for(int x = 0; x < matrix.width(); x++)
         for(int y = 0; y< matrix.height(); y++) {
             double aux = image.pixel(x,y)&0x000000FF;
@@ -570,5 +631,7 @@ QImage PIDTools::ifft(QImage image)
             double aux = matrix[x][y].abs();
             image.setPixel(x,y,QColor(aux,aux,aux).rgba());
         }
+
+    qDebug() << timer.elapsed();
     return image;
 }
